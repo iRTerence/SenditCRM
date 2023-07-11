@@ -9,7 +9,7 @@ const MainChart = () => {
   return (
     <div className="mainChart">
       <div className="top">
-        <h3 className="title">Total Revenue</h3>
+        {/* <h3 className="title">Total Revenue</h3> */}
         <MoreVertIcon fontSize="small" />
       </div>
       <div className="bottom">

@@ -39,9 +39,11 @@ const Home = () => {
             <TransactionsPieChart />
           </div>
           <div className="middle-boxes">
+            <h2 className="transaction-chart-title">Total Revenue</h2>
+
             <MainChart />
           </div>
-          <div className="middle-boxes">Hello</div>
+          <div className="middle-boxes">Logs</div>
         </div>
       </div>
     </>
