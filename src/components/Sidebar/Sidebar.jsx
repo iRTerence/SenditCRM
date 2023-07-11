@@ -40,12 +40,22 @@ function Sidebar({ hide }) {
       text: "Dashboard",
       icon: dashboardIcon,
       activeIcon: dashboardIconActive,
+      subMenu: [
+        { id: "general", text: "General", icon: helpcenterIcon },
+        { id: "security", text: "Security" },
+        { id: "privacy", text: "Privacy" },
+      ],
     },
     {
       id: "program",
       text: "Program",
       icon: programIcon,
       activeIcon: programIconActive,
+      subMenu: [
+        { id: "general", text: "General", icon: helpcenterIcon },
+        { id: "security", text: "Security" },
+        { id: "privacy", text: "Privacy" },
+      ],
     },
     { id: "crm", text: "CRM", icon: crmIcon, activeIcon: crmIconActive },
     {
@@ -118,7 +128,7 @@ function Sidebar({ hide }) {
                 <span>{item.text}</span>
               </Link>
               {item.subMenu && activeMenuItem === item.id && (
-                <ul className="submenu">
+                <div className="submenu">
                   {item.subMenu.map((subItem) => (
                     <li key={subItem.id}>
                       <div className="icon">
@@ -136,12 +146,13 @@ function Sidebar({ hide }) {
                       </Link>
                     </li>
                   ))}
-                </ul>
+                </div>
               )}
             </li>
           ))}
         </ul>
       </div>
+      <div class="submenubar"></div>
     </div>
   );
 }
