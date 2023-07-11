@@ -1,79 +1,93 @@
 .sidebar {
-    background-color: #fff;
-    flex: 1;
-    border-right: 0.5px solid rgb(230, 227, 227);
-    min-height: 100vh;
-  
-    .midsidebar {
+  background-color: #fff;
+  flex: 1;
+  border-right: 0.5px solid rgb(230, 227, 227);
+  min-height: 100vh;
+
+  .midsidebar {
+    position: relative;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      text-align: center;
+      align-items: center;
+      padding: 5px;
+      cursor: pointer;
       position: relative;
-  
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+      border: 1px solid #f2f2f2;
+
+      .icon {
+        font-size: 48px;
+        color: #000000;
       }
-  
-      li {
-        text-align: center;
-        align-items: center;
-        padding: 5px;
-        cursor: pointer;
-        position: relative;
-        border: 1px solid #F2F2F2;
-  
-        .icon {
-          font-size: 48px;
-          color: #000000;
-        }
+
+      .icon-svg {
+        fill: #5523d2;
       }
-  
-      .title {
-        font-size: 13px;
-        font-weight: bold;
-        color: #f0e7de;
-        margin-top: 15px;
+
+      .icon img {
+        color: yellow;
       }
-  
+
       span {
         color: #000000;
       }
-  
-      .submenu {
-        position: absolute;
-        top: 0;
-        left: 100%;
-        width: 200px;
-        padding: 10px;
-        background-color: #fff;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s, visibility 0.3s;
-        z-index: 999;
-  
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-  
-          li {
-            padding: 8px 0;
-  
-            a {
-              display: block;
-              text-decoration: none;
-              color: #333;
-            }
-          }
+
+      &.active {
+        color: #5523d2;
+
+        .icon {
+          color: #5523d2;
         }
-      }
-  
-      li:hover {
-        .submenu {
-          opacity: 1;
-          visibility: visible;
+
+        span {
+          color: #5523d2;
         }
       }
     }
+
+    .submenu {
+      position: absolute;
+      top: 0; /* Updated */
+      left: 100%;
+      width: 200px;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 999;
+      height: 100%;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        height: auto; /* Updated */
+
+        li {
+          padding: 8px 0;
+
+          a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+          }
+        }
+      }
+    }
+
+    li:hover {
+      .submenu {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
-  
+}

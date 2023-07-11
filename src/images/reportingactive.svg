@@ -1,0 +1,10 @@
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="simple-line-icons:docs" clip-path="url(#clip0_16_4166)">
+<path id="Vector" d="M27 0H14.625C13.3824 0 12.375 1.00744 12.375 2.25H24.75V11.25H33.75V29.25H25.875V31.5H33.75C34.9926 31.5 36 30.4926 36 29.25V9.00056L27 0ZM27 9V3.1815L32.8174 9H27ZM2.25 4.5C1.00744 4.5 0 5.50744 0 6.75V33.75C0 34.9926 1.00744 36 2.25 36H21.375C22.6176 36 23.625 34.9926 23.625 33.75V13.5006L14.625 4.5H2.25ZM21.375 33.75H2.25V6.75H12.375V15.75H21.375V33.75ZM14.625 13.5V7.6815L20.4424 13.5H14.625Z" fill="#5523D2"/>
+</g>
+<defs>
+<clipPath id="clip0_16_4166">
+<rect width="36" height="36" fill="white"/>
+</clipPath>
+</defs>
+</svg>
