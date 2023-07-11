@@ -10,6 +10,7 @@ import user from "../../images/user.svg";
 import world from "../../images/world.svg";
 import BarCharts from "../../components/BarChart/BarCharts";
 import LineCharts from "../../components/LineChart/LineCharts";
+import TransactionsPieChart from "../../components/TransactionsPieChart/TransactionsPieChart";
 
 const Home = () => {
   return (
@@ -32,6 +33,15 @@ const Home = () => {
           <div className="top-container-right">
             <BarCharts />
           </div>
+        </div>
+        <div className="middle-container">
+          <div className="middle-boxes">
+            <TransactionsPieChart />
+          </div>
+          <div className="middle-boxes">
+            <MainChart />
+          </div>
+          <div className="middle-boxes">Hello</div>
         </div>
       </div>
     </>

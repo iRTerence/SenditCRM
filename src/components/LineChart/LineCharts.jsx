@@ -51,7 +51,7 @@ function LineCharts() {
             stroke="#FAC800"
             strokeWidth={3.273}
             dot={false}
-            isAnimationActive={false}
+            // isAnimationActive={false}
           />
           <Line
             type="monotone"
@@ -59,7 +59,7 @@ function LineCharts() {
             stroke="#5523D2"
             strokeWidth={3.273}
             dot={false}
-            isAnimationActive={false}
+            // isAnimationActive={false}
           />
         </LineChart>
       </ResponsiveContainer>
