@@ -4,7 +4,13 @@ import InfoCard from "../../components/InfoCard/InfoCard";
 import MainChart from "../../components/MainChart/MainChart";
 import Chart from "../../components/Chart/Chart";
 import Tables from "../../components/Tables/Tables";
-// import { getUsers, callDeviceAuditApi } from "../../util/http";
+import reports from "../../images/reports.svg";
+import transactions from "../../images/transactions.svg";
+import user from "../../images/user.svg";
+import world from "../../images/world.svg";
+import BarCharts from "../../components/BarChart/BarCharts";
+import LineCharts from "../../components/LineChart/LineCharts";
+
 const Home = () => {
   return (
     <>
@@ -12,8 +18,20 @@ const Home = () => {
         <div className="dashboard-title">Dashboard</div>
 
         <div className="top-container">
-          <div className="top-container-left">Hello</div>
-          <div className="top-container-right">Hello</div>
+          <div className="top-container-left">
+            <div className="infocard-container">
+              <InfoCard image={reports} title={"Reports"} />
+              <InfoCard image={transactions} title={"Transactions"} />
+              <InfoCard image={user} title={"Customers"} number={120} />
+              <InfoCard image={world} title={"Other"} />
+            </div>
+            <div className="linechart-container">
+              <LineCharts />
+            </div>
+          </div>
+          <div className="top-container-right">
+            <BarCharts />
+          </div>
         </div>
       </div>
     </>

@@ -1,0 +1,30 @@
+.infoCard{
+    width: 22%;
+    // height: 0;
+    background-color: white;
+    box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.04);
+    border-radius:12px;
+    padding-bottom:3%;
+    padding-top:3%;
+    text-align: center;
+    vertical-align: middle;
+
+
+    .infoCard-title{
+        text-align: center;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26.4px;
+    }
+    
+    .infoCard-number{
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26.4px;
+        padding-top:16px;
+    }
+}
+
+
