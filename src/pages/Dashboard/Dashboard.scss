@@ -3,26 +3,36 @@ $gray: #343D3A;
 
 .home{
     display:flex;
-    .dashboardContainer{
-        // background-color: lightblue;
-        flex: 7;
-    }
+    background-color: #F8F8F8;
+    width:100%;
+}
 
-    .cardsContainer, .chartsContainer{
-        display:flex;
-        padding: 20px;
-        gap: 20px;
-        flex-grow: 1;
-    }
-    .tableContainer{
-        -webkit-box-shadow: $global-box-shadow;
-        box-shadow: $global-box-shadow;
-        padding: 25px;
-        margin: 25px;
-    }
-    .tableTitle{
-        margin-bottom: 20px;
-        color: $gray;
-        font-weight: 600;
-    }
+.dashboardContainer{
+    width:100%;
+}
+.dashboard-container{
+
+    padding: 44px 61px 44px 61px; 
+}
+
+.dashboard-title{
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33.6px;
+    padding-bottom: 21px;
+    border-bottom: 1px solid #D7D7D7;
+}
+
+.top-container{
+    display:flex;
+    gap: 32px;
+}
+
+.top-container-left{
+    flex: 6
+}
+
+.top-container-right{
+    flex:6
 }

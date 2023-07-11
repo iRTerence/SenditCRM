@@ -44,7 +44,7 @@ function App() {
           <Sidebar hide={hide} />
           <div className="dashboardContainer">
             <Routes>
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
             </Routes>
           </div>

@@ -24,26 +24,75 @@ import "./Sidebar.scss";
 
 function Sidebar({ hide }) {
   const [activeMenuItem, setActiveMenuItem] = useState(null);
+  const [activeSubMenu, setActiveSubMenu] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
-    setActiveMenuItem(location.pathname.split("/")[1]);
+    const pathSegments = location.pathname.split("/");
+    setActiveMenuItem(pathSegments[1]);
+    setActiveSubMenu(pathSegments[2]);
   }, [location.pathname]);
 
   function handleMenuItemClick(menuItem) {
     setActiveMenuItem(menuItem);
+    setActiveSubMenu(null); // Reset active submenu item
+  }
+
+  function handleSubMenuClick(subMenuItem) {
+    setActiveSubMenu(subMenuItem);
   }
 
   const menuItems = [
     {
-      id: "",
+      id: "dashboard",
       text: "Dashboard",
       icon: dashboardIcon,
       activeIcon: dashboardIconActive,
       subMenu: [
-        { id: "general", text: "General", icon: helpcenterIcon },
-        { id: "security", text: "Security" },
-        { id: "privacy", text: "Privacy" },
+        {
+          id: "dashboard",
+          text: "Dashboard",
+          icon: dashboardIcon,
+          activeIcon: dashboardIconActive,
+        },
+        {
+          id: "program",
+          text: "Program",
+          icon: programIcon,
+          activeIcon: programIconActive,
+        },
+
+        { id: "crm", text: "CRM", icon: crmIcon, activeIcon: crmIconActive },
+        {
+          id: "reporting",
+          text: "Reporting",
+          icon: reportingIcon,
+          activeIcon: reportingIconActive,
+        },
+        {
+          id: "marketing",
+          text: "Marketing",
+          icon: marketingIcon,
+          activeIcon: marketingIconActive,
+        },
+        {
+          id: "batch",
+          text: "Batch Services",
+          icon: batchservicesIcon,
+          activeIcon: batchservicesIconActive,
+        },
+        {
+          id: "settings",
+          text: "Settings",
+          icon: settingIcon,
+          activeIcon: settingIconActive,
+        },
+        {
+          id: "help",
+          text: "Help Centre",
+          icon: helpcenterIcon,
+          activeIcon: helpcenterIconActive,
+        },
       ],
     },
     {
@@ -52,9 +101,9 @@ function Sidebar({ hide }) {
       icon: programIcon,
       activeIcon: programIconActive,
       subMenu: [
-        { id: "general", text: "General", icon: helpcenterIcon },
-        { id: "security", text: "Security" },
-        { id: "privacy", text: "Privacy" },
+        { id: "general", text: "Genera2l", icon: helpcenterIcon },
+        { id: "security", text: "Securit2y" },
+        { id: "privacy", text: "Privac2y" },
       ],
     },
     { id: "crm", text: "CRM", icon: crmIcon, activeIcon: crmIconActive },
@@ -102,8 +151,16 @@ function Sidebar({ hide }) {
     },
   ];
 
+  const activeMenuItemData = menuItems.find(
+    (item) => item.id === activeMenuItem
+  );
+  const subMenuItems =
+    activeMenuItemData && activeMenuItemData.subMenu
+      ? activeMenuItemData.subMenu
+      : [];
+
   return (
-    <div className={`${hide ? "hide" : "sidebar"}`}>
+    <div className={`sidebar ${hide ? "hide" : ""}`}>
       <div className="midsidebar">
         <ul>
           {menuItems.map((item) => (
@@ -127,32 +184,48 @@ function Sidebar({ hide }) {
                 </div>
                 <span>{item.text}</span>
               </Link>
-              {item.subMenu && activeMenuItem === item.id && (
-                <div className="submenu">
-                  {item.subMenu.map((subItem) => (
-                    <li key={subItem.id}>
-                      <div className="icon">
-                        {subItem.icon && typeof subItem.icon === "string" ? (
-                          <img src={subItem.icon} alt={subItem.text} />
-                        ) : (
-                          subItem.icon
-                        )}
-                      </div>
-                      <Link
-                        to={`/${item.id}/${subItem.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        {subItem.text}
-                      </Link>
-                    </li>
-                  ))}
-                </div>
-              )}
             </li>
           ))}
         </ul>
       </div>
-      <div class="submenubar"></div>
+      {subMenuItems.length > 0 && (
+        <div className="submenubar">
+          <div className="submenubarcontainer">
+            {subMenuItems.map((subItem) => (
+              <div
+                key={subItem.id}
+                className={`${
+                  activeSubMenu === subItem.id ? "active" : ""
+                } submenucontainer`}
+                onClick={() => handleSubMenuClick(subItem.id)}
+              >
+                <Link
+                  to={`/${activeMenuItem}/${subItem.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className="icon">
+                    {typeof subItem.icon === "string" ? (
+                      <img
+                        src={
+                          activeSubMenu === subItem.id
+                            ? subItem.activeIcon
+                            : subItem.icon
+                        }
+                        alt={subItem.text}
+                      />
+                    ) : (
+                      subItem.icon
+                    )}
+                  </div>
+                  <div className={activeSubMenu === subItem.id ? "active" : ""}>
+                    <span>{subItem.text}</span>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

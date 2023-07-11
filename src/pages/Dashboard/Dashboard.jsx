@@ -8,21 +8,12 @@ import Tables from "../../components/Tables/Tables";
 const Home = () => {
   return (
     <>
-      <div className="home">
-        <div className="cardsContainer">
-          <InfoCard type="sales" />
-          <InfoCard type="earnings" />
-          <InfoCard type="balance" />
-          <InfoCard type="loans" />
-        </div>
-      </div>
-      <div className="chartsContainer">
-        <Chart />
-        <MainChart />
-      </div>
-      <div className="tableContainer">
-        <div className="tableTitle">
-          <Tables />
+      <div className="dashboard-container">
+        <div className="dashboard-title">Dashboard</div>
+
+        <div className="top-container">
+          <div className="top-container-left">Hello</div>
+          <div className="top-container-right">Hello</div>
         </div>
       </div>
     </>
