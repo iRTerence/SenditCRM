@@ -1,0 +1,71 @@
+.mainChart{
+    flex:1;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47); 
+    box-shadow: 2px 4px 9px 1px rgba(201, 201, 201, 0.47);
+    .top{
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #343D3A;
+        padding: 20px;
+
+        .title{
+            font-weight: 500;
+        }
+
+    }
+    .bottom{
+        padding:20px;
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+        gap:15px;
+
+        .chartInfo{
+            width: 150px;
+            height: 150px;
+        }
+
+        .title{
+            font-weight: 500;
+            color:#343D3A
+        }
+        .amount{
+            font-size: 26px;
+
+        }
+        .desc{
+            font-weight: 300;
+            font-size: 12px;
+            color:#343D3A;
+            text-align: center;
+        }
+
+        .revenueSummary{
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .revenuedesc{
+            text-align: center;
+        }
+        .revenueTitle{
+            font-size: 14px;
+            color: #343D3A;
+        }
+        .revenueResult{
+            display:flex;
+            align-items: center;
+            margin-top: 10px;
+
+            &.positive{
+                color: green;
+            }
+            &.negative{
+                color: red;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+$global-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+$gray: #343D3A;
+
+.home{
+    display:flex;
+    .dashboardContainer{
+        // background-color: lightblue;
+        flex: 7;
+    }
+
+    .cardsContainer, .chartsContainer{
+        display:flex;
+        padding: 20px;
+        gap: 20px;
+        flex-grow: 1;
+    }
+    .tableContainer{
+        -webkit-box-shadow: $global-box-shadow;
+        box-shadow: $global-box-shadow;
+        padding: 25px;
+        margin: 25px;
+    }
+    .tableTitle{
+        margin-bottom: 20px;
+        color: $gray;
+        font-weight: 600;
+    }
+}
