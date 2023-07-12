@@ -16,8 +16,8 @@ import { useIdleTimer } from "react-idle-timer";
 import { useAuth } from "./store/context/auth";
 
 function App() {
-  const [hide, setHide] = useState(false);
   const auth = useAuth();
+  const path = useLocation().pathname;
 
   useIdleTimer({
     timeout: 1000 * 60 * 20,
@@ -27,27 +27,20 @@ function App() {
     },
   });
 
-  let path = useLocation();
-  // useEffect(() => {
-  //   if (path.pathname === "/" || path.pathname === "/signup") {
-  //     setHide(true);
-  //   } else {
-  //     setHide(false);
-  //   }
-  // }, [path.pathname]);
+  const isLoginRoute = path === "/";
 
   return (
     <div className="App">
-      <Navbar hide={hide} />
+      {!isLoginRoute && <Navbar />}
       <div className="home">
         <Provider store={store}>
-          <Sidebar hide={hide} />
-          <div className="dashboardContainer">
-            <Routes>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </div>
+          {!isLoginRoute && <Sidebar />}
+          {/* <div className="dashboardContainer"> */}
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+          {/* </div> */}
         </Provider>
       </div>
     </div>

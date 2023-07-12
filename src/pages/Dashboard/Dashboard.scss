@@ -3,18 +3,22 @@ $gray: #343D3A;
 
 .home{
     display:flex;
-    background-color: #F8F8F8;
+    // background-color: #F8F8F8;
     width:100%;
 }
 
 .dashboardContainer{
-    width:100%;
-    overflow-y: auto;
-    padding: 44px 61px 44px 61px; 
 
+    width:100%;
+    // overflow-y: auto;
+    // padding: 44px 61px 44px 61px; 
 }
 .dashboard-container{
 
+    width:100%;
+    overflow-y: auto;
+    background-color: #F8F8F8;
+    padding: 44px 61px 44px 61px; 
 
 }
 

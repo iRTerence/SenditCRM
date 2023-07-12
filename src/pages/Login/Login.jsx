@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getUsers } from "../../util/http";
 import handleChange from "../../hooks/handleChange";
-import { login } from "../../util/http";
+// import { login } from "../../util/http";
 import { useAuth } from "../../store/context/auth";
 import { useNavigate, useLocation } from "react-router-dom";
+import userImage from "../../images/login-user.svg";
+import logo from "../../images/SenditLogo.svg";
+
+import "./Login.scss";
 
 function Login() {
   const [userName, setUsername, usernameReset] = handleChange("");
@@ -16,54 +20,90 @@ function Login() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    let response = await login(userName, password);
-    setUserData(response);
-    auth.login(response);
+    navigate("/dashboard");
+    // let response = await login(userName, password);
+    // setUserData(response);
+    // auth.login(response);
   }
 
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      setUserData(foundUser);
-      auth.login(foundUser);
-      navigate(redirectPath, { replace: true });
-    }
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUserData(foundUser);
+  //     auth.login(foundUser);
+  //     navigate(redirectPath, { replace: true });
+  //   }
 
-    if (userData != undefined) {
-      if (userData.callStatus == 0) {
-        console.log("bad login");
-        console.log(auth.user);
-      } else {
-        console.log("Logged In!!!");
-        console.log(auth.user.merchant);
-        localStorage.setItem("user", JSON.stringify(auth.user.merchant));
-        navigate(redirectPath, { replace: true });
-      }
-    }
-  }, [userData]);
+  //   if (userData != undefined) {
+  //     if (userData.callStatus == 0) {
+  //       console.log("bad login");
+  //       console.log(auth.user);
+  //     } else {
+  //       console.log("Logged In!!!");
+  //       console.log(auth.user.merchant);
+  //       localStorage.setItem("user", JSON.stringify(auth.user.merchant));
+  //       navigate(redirectPath, { replace: true });
+  //     }
+  //   }
+  // }, [userData]);
 
   function validateForm() {
     return userName.length > 0 && password.length > 0;
   }
 
   return (
-    <div>
-      <form onSubmit={handleFormSubmit}>
-        <label htmlFor="username">
-          User Name {userData == undefined ? "stuff here" : "got data"}
-        </label>
-        <input name="username" value={userName} onChange={setUsername}></input>
-        <label htmlFor="username">Password</label>
-        <input name="username" value={password} onChange={setPassword}></input>
-        <button disabled={!validateForm()}>Submit!</button>
-      </form>
+    <div className="login-container">
+      <div className="login-box">
+        <div className="left-box">
+          <div class="login-user-image">
+            <img src={userImage}></img>
+          </div>
+          <div className="login-title">
+            ADMIN <br />
+            PORTAL
+          </div>
+          <div className="login-subtitle">
+            Please use your credentials to login. <br />
+            If you are not a member, please
+          </div>
+        </div>
+        <div className="right-box">
+          <div className="sendit-logo">
+            <img src={logo}></img>
+          </div>
 
-      {auth.user && auth.user.callStatus == 0 ? (
-        <div>Please enter a valid login</div>
-      ) : (
-        <div></div>
-      )}
+          <div className="login-label">Login</div>
+
+          <form onSubmit={handleFormSubmit}>
+            <div>
+              <input
+                className="login-input"
+                name="username"
+                value={userName}
+                onChange={setUsername}
+                placeholder="E-mail"
+              ></input>
+            </div>
+            <div>
+              <input
+                className="login-input"
+                name="username"
+                value={password}
+                onChange={setPassword}
+                placeholder="Password"
+              ></input>
+            </div>
+
+            <div className="login-button-container">
+              <div>Forgot Password?</div>
+              <div>
+                <button className="login-button">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
