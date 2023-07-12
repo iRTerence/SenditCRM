@@ -65,7 +65,7 @@ function Login() {
           </div>
           <div className="login-subtitle">
             Please use your credentials to login. <br />
-            If you are not a member, please
+            If you are not a member, please register.
           </div>
         </div>
         <div className="right-box">
