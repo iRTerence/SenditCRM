@@ -39,7 +39,7 @@ const Home = () => {
             <TransactionsPieChart />
           </div>
           <div className="middle-boxes">
-            <h2 className="transaction-chart-title">Total Revenues</h2>
+            <h2 className="transaction-chart-title">Total Revenue</h2>
 
             <MainChart />
           </div>
