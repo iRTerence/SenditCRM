@@ -14,6 +14,7 @@ import { AuthProvider } from "./store/context/auth";
 import RequiredAuth from "./components/RequiredAuth/RequiredAuth";
 import { useIdleTimer } from "react-idle-timer";
 import { useAuth } from "./store/context/auth";
+import Program from "./pages/Program/Program";
 
 function App() {
   const auth = useAuth();
@@ -39,6 +40,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/program" element={<Program />} />
           </Routes>
           {/* </div> */}
         </Provider>
