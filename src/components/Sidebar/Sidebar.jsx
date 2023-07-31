@@ -100,11 +100,11 @@ function Sidebar({ hide }) {
       text: "Program",
       icon: programIcon,
       activeIcon: programIconActive,
-      subMenu: [
-        { id: "general", text: "Genera2l", icon: helpcenterIcon },
-        { id: "security", text: "Securit2y" },
-        { id: "privacy", text: "Privac2y" },
-      ],
+      // subMenu: [
+      //   { id: "general", text: "Genera2l", icon: helpcenterIcon },
+      //   { id: "security", text: "Securit2y" },
+      //   { id: "privacy", text: "Privac2y" },
+      // ],
     },
     { id: "crm", text: "CRM", icon: crmIcon, activeIcon: crmIconActive },
     {
