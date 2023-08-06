@@ -11,6 +11,7 @@ import world from "../../images/world.svg";
 import BarCharts from "../../components/BarChart/BarCharts";
 import LineCharts from "../../components/LineChart/LineCharts";
 import TransactionsPieChart from "../../components/TransactionsPieChart/TransactionsPieChart";
+import TransactionList from "../../components/TransactionList/TransactionList";
 
 const Home = () => {
   return (
@@ -20,18 +21,20 @@ const Home = () => {
       <div className="top-container">
         <div className="top-container-left">
           <div className="infocard-container">
-            <InfoCard image={reports} title={"Reports"} />
-            <InfoCard image={transactions} title={"Transactions"} />
-            <InfoCard image={user} title={"Customers"} number={120} />
-            <InfoCard image={world} title={"Other"} />
+            <InfoCard image={reports} title={"Reports"} number={74} />
+            <InfoCard
+              image={transactions}
+              title={"Transactions"}
+              number={1598}
+            />
+            <InfoCard image={user} title={"Customers"} number={367} />
+            <InfoCard image={world} title={"Other"} number={97} />
           </div>
           <div className="linechart-container">
             <LineCharts />
           </div>
         </div>
-        <div className="top-container-right">
-          <BarCharts />
-        </div>
+        <div className="top-container-right">{<TransactionList />}</div>
       </div>
       <div className="middle-container">
         <div className="middle-boxes">

@@ -49,9 +49,6 @@ $gray: #343D3A;
 
 }
 
-.top-container-right{
-    margin-top:31px;
-}
 
 .linechart-container{
     margin-top: 23px;
@@ -62,14 +59,12 @@ $gray: #343D3A;
 }
 
 .top-container-right{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top:31px;
     flex:6;
     border-radius: 15px;
     background: #3A3A3A;
     padding: 20px;
-    flex-direction: "column";
+    color: "#FFFFFF"
 
 }
 

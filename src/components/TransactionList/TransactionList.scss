@@ -1,0 +1,30 @@
+.transaction{
+    display: flex;
+    justify-content: space-between;
+    color: #FFF;
+    font-family: "Nunito";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26.4px; /* 155.294% */ 
+    margin-bottom: 20px;   
+}
+
+.TransactionListContainer {
+    .transaction-table {
+        & table {
+          border-spacing: 5px;
+        }
+      }
+    .table-header {
+      background: #3a3a3a;
+    } 
+    & .table-header-text {
+        color: #939393;
+        font-family: "Nunito";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;     
+     }
+  }
