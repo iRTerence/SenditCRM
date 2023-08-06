@@ -22,7 +22,7 @@ import logoutIconActive from "../../images/logoutactive.svg";
 
 import "./Sidebar.scss";
 
-function Sidebar({ hide }) {
+function Sidebar({ hide, isSidebarVisible }) {
   const [activeMenuItem, setActiveMenuItem] = useState(null);
   const [activeSubMenu, setActiveSubMenu] = useState(null);
   const location = useLocation();
@@ -48,52 +48,52 @@ function Sidebar({ hide }) {
       text: "Dashboard",
       icon: dashboardIcon,
       activeIcon: dashboardIconActive,
-      subMenu: [
-        {
-          id: "dashboard",
-          text: "Dashboard",
-          icon: dashboardIcon,
-          activeIcon: dashboardIconActive,
-        },
-        {
-          id: "program",
-          text: "Program",
-          icon: programIcon,
-          activeIcon: programIconActive,
-        },
+      // subMenu: [
+      //   {
+      //     id: "dashboard",
+      //     text: "Dashboard",
+      //     icon: dashboardIcon,
+      //     activeIcon: dashboardIconActive,
+      //   },
+      //   {
+      //     id: "program",
+      //     text: "Program",
+      //     icon: programIcon,
+      //     activeIcon: programIconActive,
+      //   },
 
-        { id: "crm", text: "CRM", icon: crmIcon, activeIcon: crmIconActive },
-        {
-          id: "reporting",
-          text: "Reporting",
-          icon: reportingIcon,
-          activeIcon: reportingIconActive,
-        },
-        {
-          id: "marketing",
-          text: "Marketing",
-          icon: marketingIcon,
-          activeIcon: marketingIconActive,
-        },
-        {
-          id: "batch",
-          text: "Batch Services",
-          icon: batchservicesIcon,
-          activeIcon: batchservicesIconActive,
-        },
-        {
-          id: "settings",
-          text: "Settings",
-          icon: settingIcon,
-          activeIcon: settingIconActive,
-        },
-        {
-          id: "help",
-          text: "Help Centre",
-          icon: helpcenterIcon,
-          activeIcon: helpcenterIconActive,
-        },
-      ],
+      //   { id: "crm", text: "CRM", icon: crmIcon, activeIcon: crmIconActive },
+      //   {
+      //     id: "reporting",
+      //     text: "Reporting",
+      //     icon: reportingIcon,
+      //     activeIcon: reportingIconActive,
+      //   },
+      //   {
+      //     id: "marketing",
+      //     text: "Marketing",
+      //     icon: marketingIcon,
+      //     activeIcon: marketingIconActive,
+      //   },
+      //   {
+      //     id: "batch",
+      //     text: "Batch Services",
+      //     icon: batchservicesIcon,
+      //     activeIcon: batchservicesIconActive,
+      //   },
+      //   {
+      //     id: "settings",
+      //     text: "Settings",
+      //     icon: settingIcon,
+      //     activeIcon: settingIconActive,
+      //   },
+      //   {
+      //     id: "help",
+      //     text: "Help Centre",
+      //     icon: helpcenterIcon,
+      //     activeIcon: helpcenterIconActive,
+      //   },
+      // ],
     },
     {
       id: "program",
@@ -130,11 +130,11 @@ function Sidebar({ hide }) {
       text: "Settings",
       icon: settingIcon,
       activeIcon: settingIconActive,
-      subMenu: [
-        { id: "general", text: "General", icon: helpcenterIcon },
-        { id: "security", text: "Security" },
-        { id: "privacy", text: "Privacy" },
-      ],
+      // subMenu: [
+      //   { id: "general", text: "General", icon: helpcenterIcon },
+      //   { id: "security", text: "Security" },
+      //   { id: "privacy", text: "Privacy" },
+      // ],
     },
     {
       id: "help",
@@ -160,7 +160,11 @@ function Sidebar({ hide }) {
       : [];
 
   return (
-    <div className={`sidebar ${hide ? "hide" : ""}`}>
+    <div
+      className={`sidebar ${
+        isSidebarVisible ? "sidebarVisible" : "sidebarHidden"
+      }`}
+    >
       <div className="midsidebar">
         <ul>
           {menuItems.map((item) => (

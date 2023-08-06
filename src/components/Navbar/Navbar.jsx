@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-function Navbar({ hide }) {
+function Navbar({ hide, onMenuIconClick }) {
   const [language, setLanguage] = useState("");
 
   const handleChange = (event) => {
@@ -23,7 +23,7 @@ function Navbar({ hide }) {
     <div className={`${hide ? "hide" : "navbar"}`}>
       <div className="wrapper">
         <div class="left-navbar">
-          <div className="navicons">
+          <div className="navicons" onClick={onMenuIconClick}>
             <ListOutlinedIcon className="icons" />
           </div>
           <div className="search">

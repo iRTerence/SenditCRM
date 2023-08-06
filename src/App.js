@@ -16,8 +16,12 @@ import { useIdleTimer } from "react-idle-timer";
 import { useAuth } from "./store/context/auth";
 import Program from "./pages/Program/Program";
 import CRM from "./pages/CRM/CRM";
+import Footer from "./components/Footer/Footer";
+import FooterNotifications from "./components/FooterNotifications/FooterNotifications";
 
 function App() {
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+
   const auth = useAuth();
   const path = useLocation().pathname;
 
@@ -29,14 +33,23 @@ function App() {
     },
   });
 
+  const toggleSidebar = () => {
+    setIsSidebarVisible(!isSidebarVisible);
+  };
+
   const isLoginRoute = path === "/";
 
   return (
     <div className="App">
-      {!isLoginRoute && <Navbar />}
+      {!isLoginRoute && (
+        <Navbar
+          onMenuIconClick={toggleSidebar}
+          isSidebarVisible={isSidebarVisible}
+        />
+      )}
       <div className="home">
         <Provider store={store}>
-          {!isLoginRoute && <Sidebar />}
+          {!isLoginRoute && <Sidebar isSidebarVisible={isSidebarVisible} />}
           {/* <div className="dashboardContainer"> */}
           <Routes>
             <Route path="/" element={<Login />} />
@@ -47,6 +60,8 @@ function App() {
           {/* </div> */}
         </Provider>
       </div>
+      <FooterNotifications />
+      <Footer />
     </div>
   );
 }
