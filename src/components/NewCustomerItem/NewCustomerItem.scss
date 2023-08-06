@@ -1,0 +1,42 @@
+.new-customer-container{
+    display:flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: space-around;
+
+    .new-customer-photo{
+        width: 56.564px;
+        height: 51px;
+        border-radius: 56.564px;
+        margin-right: 25px;
+
+    }
+
+    .new-customer-name{
+        color: #000;
+        font-family: "Nunito";
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        max-width: calc(100% - 83px); /* Adjust the value based on the total width of other elements inside .new-customer-container */
+    }
+
+    .joined-text{
+        color: #909090;
+        font-family: "Nunito";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-left: 2rem;
+        margin-right: 1rem;
+    }
+    .joined-date{
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+

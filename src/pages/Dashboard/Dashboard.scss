@@ -70,7 +70,7 @@ $gray: #343D3A;
 
 .middle-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 26px;
     margin-top: 23px;
 }
@@ -81,4 +81,20 @@ $gray: #343D3A;
     background: #FFF;
     box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.04);
     padding: 25px;
+    flex-wrap: wrap; 
+    max-height: 350px;
+
+    .viewall-link{
+        text-align: right;
+        color: #5523D2;
+        font-size: 15px;
+        margin-top: 48px;
+
+        // padding: 25px;
+
+    }
+
 }
+
+
+

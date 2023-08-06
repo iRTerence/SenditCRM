@@ -15,7 +15,7 @@ const TransactionsPieChart = () => {
   return (
     <div>
       <h2 className="transaction-chart-title">Transactions</h2>
-      <ResponsiveContainer width="100%" height={350}>
+      <ResponsiveContainer width="100%" height={250}>
         <PieChart>
           <Pie
             data={data}

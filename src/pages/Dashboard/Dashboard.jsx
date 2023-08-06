@@ -12,6 +12,7 @@ import BarCharts from "../../components/BarChart/BarCharts";
 import LineCharts from "../../components/LineChart/LineCharts";
 import TransactionsPieChart from "../../components/TransactionsPieChart/TransactionsPieChart";
 import TransactionList from "../../components/TransactionList/TransactionList";
+import NewCustomerItem from "../../components/NewCustomerItem/NewCustomerItem";
 
 const Home = () => {
   return (
@@ -40,12 +41,18 @@ const Home = () => {
         <div className="middle-boxes">
           <TransactionsPieChart />
         </div>
-        <div className="middle-boxes">
-          <h2 className="transaction-chart-title">Total Revenue</h2>
+        <div className="middle-boxes newcustomer-box">
+          <h2 className="transaction-chart-title">New Customers</h2>
+          <div>
+            <NewCustomerItem />
+            <NewCustomerItem />
+            <NewCustomerItem />
+            <div className="viewall-link">View All</div>
+          </div>
 
-          <MainChart />
+          {/* <MainChart /> */}
         </div>
-        <div className="middle-boxes">Logs</div>
+        <div className="middle-boxes">Reports</div>
       </div>
     </div>
   );
