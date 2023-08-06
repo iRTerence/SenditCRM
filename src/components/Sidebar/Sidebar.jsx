@@ -3,11 +3,15 @@ import { Link, useLocation } from "react-router-dom";
 
 import dashboardIcon from "../../images/dashboard.svg";
 import programIcon from "../../images/program.svg";
+import admin from "../../images/admin.svg";
+import adminActive from "../../images/adminactive.svg";
 import crmIcon from "../../images/crm.svg";
 import reportingIcon from "../../images/reporting.svg";
 import marketingIcon from "../../images/marketing.svg";
+import complianceIcon from "../../images/compliance.svg";
+import complianceIconActive from "../../images/complianceActive.svg";
 import batchservicesIcon from "../../images/batchservices.svg";
-import settingIcon from "../../images/setting.svg";
+import settingIcon from "../../images/settings.svg";
 import helpcenterIcon from "../../images/helpcentre.svg";
 import logoutIcon from "../../images/logout.svg";
 import dashboardIconActive from "../../images/dashboardactive.svg";
@@ -95,29 +99,31 @@ function Sidebar({ hide, isSidebarVisible }) {
       //   },
       // ],
     },
+
+    { id: "crm", text: "CRM", icon: crmIcon, activeIcon: crmIconActive },
     {
-      id: "program",
-      text: "Program",
-      icon: programIcon,
-      activeIcon: programIconActive,
+      id: "admin",
+      text: "Admin",
+      icon: admin,
+      activeIcon: adminActive,
       // subMenu: [
       //   { id: "general", text: "Genera2l", icon: helpcenterIcon },
       //   { id: "security", text: "Securit2y" },
       //   { id: "privacy", text: "Privac2y" },
       // ],
     },
-    { id: "crm", text: "CRM", icon: crmIcon, activeIcon: crmIconActive },
     {
       id: "reporting",
       text: "Reporting",
       icon: reportingIcon,
       activeIcon: reportingIconActive,
     },
+
     {
-      id: "marketing",
-      text: "Marketing",
-      icon: marketingIcon,
-      activeIcon: marketingIconActive,
+      id: "compliance",
+      text: "Compliance",
+      icon: complianceIcon,
+      activeIcon: complianceIconActive,
     },
     {
       id: "batch",

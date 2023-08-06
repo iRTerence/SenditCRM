@@ -45,7 +45,7 @@ body {
     li {
       text-align: center;
       align-items: center;
-      padding: 5px;
+      padding: 20px 5px 20px 5px;
       cursor: pointer;
       position: relative;
       border: 1px solid #f2f2f2;
@@ -64,7 +64,7 @@ body {
       }
 
       span {
-        color: #000000;
+        color: #909090;
       }
 
       &.active {
