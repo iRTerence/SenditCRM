@@ -18,6 +18,7 @@ import Program from "./pages/Program/Program";
 import CRM from "./pages/CRM/CRM";
 import Footer from "./components/Footer/Footer";
 import FooterNotifications from "./components/FooterNotifications/FooterNotifications";
+import "./App.scss";
 
 function App() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -50,17 +51,15 @@ function App() {
       <div className="home">
         <Provider store={store}>
           {!isLoginRoute && <Sidebar isSidebarVisible={isSidebarVisible} />}
-          {/* <div className="dashboardContainer"> */}
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/program" element={<Program />} />
             <Route path="/CRM" element={<CRM />} />
           </Routes>
-          {/* </div> */}
         </Provider>
       </div>
-      <FooterNotifications />
+      {/* <FooterNotifications /> */}
       <Footer />
     </div>
   );

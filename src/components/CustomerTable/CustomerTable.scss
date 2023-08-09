@@ -1,0 +1,22 @@
+.arrowLabelStyle{
+    color: #6B7280;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 214.286% */
+}
+
+
+.page-number {
+    cursor: pointer;
+    margin: 0 0.5rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    color:#6B7280
+  }
+  
+  .active-page {
+    background: rgba(85, 35, 210, 0.10);
+  }
