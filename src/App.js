@@ -19,6 +19,7 @@ import CRM from "./pages/CRM/CRM";
 import Footer from "./components/Footer/Footer";
 import FooterNotifications from "./components/FooterNotifications/FooterNotifications";
 import "./App.scss";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -56,6 +57,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/program" element={<Program />} />
             <Route path="/CRM" element={<CRM />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </Provider>
       </div>

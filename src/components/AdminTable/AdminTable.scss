@@ -1,0 +1,72 @@
+.logged-in-text{
+    color:#fb9b55
+}
+.email-admin-text{
+    color: #00365A;
+/* Body/Regular */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 187.5% */
+}
+
+.managerButton{
+    border-radius: 50px;
+    background: #FBCE60;
+    padding: 8px 28px;
+    width: 80px;
+    color: #000;
+    text-align: center;
+    /* Body/Medium */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px; /* 187.5% */}
+
+    .admin-button{
+        border-radius: 50px;
+        background: #000;        
+        padding: 8px 28px;
+        width: 80px;
+        color: white;
+        text-align: center;
+        /* Body/Medium */
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px; /* 187.5% */
+    }
+    .auditor-button{
+        border-radius: 50px;
+        background: #1C9151;
+        padding: 8px 28px;
+        width: 80px;
+        color: white;
+        text-align: center;
+        /* Body/Medium */
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px; /* 187.5% */
+    }
+    .button-container {
+        display: flex;
+        gap: 5px; 
+      }
+
+      .admin-actions-container{
+        display:flex;
+        gap: 10px;
+      }
+
+      .modify-role-button{
+        display:flex;
+        color:rgb(138 152 161);
+        font-size: 12px;
+        align-items: center;
+        gap: 5px;
+      }
