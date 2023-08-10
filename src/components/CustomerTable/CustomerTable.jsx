@@ -11,8 +11,11 @@ import IconButton from "@mui/material/IconButton";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import TableHead from "@mui/material/TableHead";
-
+import UserIcon from "../../images/user-octagon.svg";
 import "./CustomerTable.scss";
+import EditIcon from "../../images/editpencil.svg";
+import UserFace from "../../images/userface.jpg";
+import Flag from "react-world-flags";
 
 function CustomerTable(props) {
   const theme = useTheme();
@@ -112,61 +115,164 @@ function CustomerTable(props) {
   );
 }
 
-function createData(name, calories, fat) {
-  return { name, calories, fat };
+function createData(name, email, phone, address, country) {
+  return { name, email, phone, address, country };
 }
 
 const fruitNames = [
-  "Apple",
-  "Banana",
-  "Orange",
-  "Grapes",
-  "Strawberry",
-  "Blueberry",
-  "Pineapple",
-  "Mango",
-  "Watermelon",
-  "Kiwi",
-  "Peach",
-  "Pear",
-  "Plum",
-  "Cherry",
-  "Blackberry",
-  "Raspberry",
-  "Apricot",
-  "Lemon",
-  "Lime",
-  "Coconut",
-  "Pomegranate",
-  "Fig",
-  "Guava",
-  "Papaya",
-  "Cranberry",
-  "Cantaloupe",
-  "Honeydew",
-  "Passion Fruit",
-  "Dragon Fruit",
-  "Mangosteen",
-  "Lychee",
-  "Star Fruit",
-  "Persimmon",
-  "Avocado",
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  {
+    id: 1,
+    name: "Apple",
+    email: "Emailtest@email.com",
+    address: "475 Spruce Drive, Pittsburg, PA 23592",
+    country: "CAN",
+    phone: "999-999-9999",
+  },
+  //   "Banana",
+  //   "Orange",
+  //   "Grapes",
+  //   "Strawberry",
+  //   "Blueberry",
+  //   "Pineapple",
+  //   "Mango",
+  //   "Watermelon",
+  //   "Kiwi",
+  //   "Peach",
+  //   "Pear",
+  //   "Plum",
+  //   "Cherry",
+  //   "Blackberry",
+  //   "Raspberry",
+  //   "Apricot",
+  //   "Lemon",
+  //   "Lime",
+  //   "Coconut",
+  //   "Pomegranate",
+  //   "Fig",
+  //   "Guava",
+  //   "Papaya",
+  //   "Cranberry",
+  //   "Cantaloupe",
+  //   "Honeydew",
+  //   "Passion Fruit",
+  //   "Dragon Fruit",
+  //   "Mangosteen",
+  //   "Lychee",
+  //   "Star Fruit",
+  //   "Persimmon",
+  //   "Avocado",
 ];
 
 // Generating random data for 76 fruits
-const rows = fruitNames
-  .map((name) => {
-    return createData(
-      name,
-      Math.floor(Math.random() * 200) + 100,
-      Math.random().toFixed(1)
-    );
-  })
-  .sort((a, b) => (a.calories < b.calories ? -1 : 1));
+const rows = fruitNames.map((name) => {
+  return createData(
+    name.name,
+    name.email,
+    name.phone,
+    name.address,
+    name.country
+  );
+});
 
 export default function CustomPaginationActionsTable() {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage] = React.useState(5);
+  const [rowsPerPage] = React.useState(2);
 
   const pageCount = Math.ceil(rows.length / rowsPerPage);
   const pageNumbers = Array.from({ length: pageCount }, (_, index) => index);
@@ -183,11 +289,25 @@ export default function CustomPaginationActionsTable() {
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>
+              <img src={UserIcon} />
+            </TableCell>
+            <TableCell align="left" className="customer-table-headers">
+              Name
+            </TableCell>
+            <TableCell align="left"></TableCell>
+            <TableCell align="left" className="customer-table-headers">
+              Email
+            </TableCell>
+            <TableCell align="left" className="customer-table-headers">
+              Phone
+            </TableCell>
+            <TableCell align="left" className="customer-table-headers">
+              Address
+            </TableCell>
+            <TableCell align="right" className="customer-table-headers">
+              Edit
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -195,22 +315,38 @@ export default function CustomPaginationActionsTable() {
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row) => (
               <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="row" style={{ width: 50 }}>
+                  <img src={UserFace} className="table-customer-photo" />
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="left">
                   {row.name}
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="right">
-                  {row.calories}
+                <TableCell style={{ width: 160 }} align="left">
+                  <Flag
+                    code={row.country}
+                    height="18"
+                    fallback={<span>Unknown</span>}
+                  />
                 </TableCell>
-                <TableCell style={{ width: 160 }} align="right">
-                  {row.fat}
+                <TableCell style={{ width: 160 }} align="left">
+                  {row.email}
+                </TableCell>
+                <TableCell style={{ width: 160 }} align="left">
+                  {row.phone}
+                </TableCell>
+                <TableCell style={{ width: 200 }} align="left">
+                  {row.address}
+                </TableCell>
+                <TableCell style={{ width: 120 }} align="right">
+                  <img src={EditIcon} />
                 </TableCell>
               </TableRow>
             ))}
-          {emptyRows > 0 && (
+          {/* {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
               <TableCell colSpan={3} />
             </TableRow>
-          )}
+          )} */}
         </TableBody>
       </Table>
       <CustomerTable

@@ -20,3 +20,18 @@
   .active-page {
     background: rgba(85, 35, 210, 0.10);
   }
+
+  .customer-table-headers{
+    color: var(--grey-grey-70, #7E92A2);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px; 
+  }
+  
+  .table-customer-photo{
+    border-radius: 100px;
+    width: 44px;
+    height: 44px;
+  }

@@ -6,6 +6,9 @@ import Search from "../../images/search.svg";
 import ArrowDown from "../../images/arrow-down.svg";
 import TableInfoHeader from "../../components/TableInfoHeader/TableInfoHeader";
 import CustomerTable from "../../components/CustomerTable/CustomerTable";
+import Paper from "@mui/material/Paper";
+import CustomerProfile from "../../components/CustomerProfile/CustomerProfile";
+import CustomerTabs from "../../components/CustomerTabs/CustomerTabs";
 
 function CRM() {
   return (
@@ -25,6 +28,7 @@ function CRM() {
       <div className="customer-table-container">
         <TableInfoHeader />
         <CustomerTable />
+
         {/* <div className="customer-info-header">
           <p>Total: 78 Customers</p>
           <div className="table-options">
@@ -40,6 +44,15 @@ function CRM() {
             </button>
           </div>
         </div> */}
+      </div>
+      <div className="customer-bottom-info">
+        <div className="customer-bottom-box">
+          <CustomerProfile />
+        </div>
+
+        <div className="customer-bottom-box">
+          <CustomerTabs />
+        </div>
       </div>
     </div>
   );

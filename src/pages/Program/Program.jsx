@@ -1,7 +1,8 @@
 import React from "react";
+import TransactionList from "../../components/TransactionList/TransactionList";
 
 function Program() {
-  return <div>Program Page Here</div>;
+  return <TransactionList />;
 }
 
 export default Program;
