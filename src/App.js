@@ -20,6 +20,7 @@ import Footer from "./components/Footer/Footer";
 import FooterNotifications from "./components/FooterNotifications/FooterNotifications";
 import "./App.scss";
 import Admin from "./pages/Admin/Admin";
+import RolesAndPermissions from "./pages/RolesAndPermissions/RolesAndPermissions";
 
 function App() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -57,7 +58,15 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/program" element={<Program />} />
             <Route path="/CRM" element={<CRM />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin" element={<Admin />}>
+              <Route path="users" element={<Admin />} />
+              <Route
+                path="RolesAndPermissions"
+                element={<RolesAndPermissions />}
+              />
+
+              {/* This is the new sub-route */}
+            </Route>{" "}
           </Routes>
         </Provider>
       </div>

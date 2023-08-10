@@ -23,6 +23,10 @@ import batchservicesIconActive from "../../images/batchservicesactive.svg";
 import settingIconActive from "../../images/settingactive.svg";
 import helpcenterIconActive from "../../images/helpcentreactive.svg";
 import logoutIconActive from "../../images/logoutactive.svg";
+import userIcon from "../../images/usersicon.svg";
+import userIconActive from "../../images/usersiconactive.svg";
+import unlockIconActive from "../../images/unlockactive.svg";
+import unlockIcon from "../../images/unlockicon.svg";
 
 import "./Sidebar.scss";
 
@@ -38,8 +42,19 @@ function Sidebar({ hide, isSidebarVisible }) {
   }, [location.pathname]);
 
   function handleMenuItemClick(menuItem) {
-    setActiveMenuItem(menuItem);
-    setActiveSubMenu(null); // Reset active submenu item
+    const menuItemData = menuItems.find((item) => item.id === menuItem);
+
+    if (menuItemData.subMenu && menuItemData.subMenu.length > 0) {
+      setActiveMenuItem(menuItem);
+      if (activeSubMenu === menuItemData.subMenu[0].id) {
+        setActiveSubMenu(null);
+      } else {
+        setActiveSubMenu(menuItemData.subMenu[0].id);
+      }
+    } else {
+      setActiveMenuItem(menuItem);
+      setActiveSubMenu(null);
+    }
   }
 
   function handleSubMenuClick(subMenuItem) {
@@ -106,11 +121,20 @@ function Sidebar({ hide, isSidebarVisible }) {
       text: "Admin",
       icon: admin,
       activeIcon: adminActive,
-      // subMenu: [
-      //   { id: "general", text: "Genera2l", icon: helpcenterIcon },
-      //   { id: "security", text: "Securit2y" },
-      //   { id: "privacy", text: "Privac2y" },
-      // ],
+      subMenu: [
+        {
+          id: "users",
+          text: "Users",
+          icon: userIcon,
+          activeIcon: userIconActive,
+        },
+        {
+          id: "RolesAndPermissions",
+          text: "Roles & Permissions",
+          icon: unlockIcon,
+          activeIcon: unlockIconActive,
+        },
+      ],
     },
     {
       id: "reporting",
@@ -198,7 +222,7 @@ function Sidebar({ hide, isSidebarVisible }) {
           ))}
         </ul>
       </div>
-      {subMenuItems.length > 0 && (
+      {subMenuItems.length > 0 && activeSubMenu && (
         <div className="submenubar">
           <div className="submenubarcontainer">
             {subMenuItems.map((subItem) => (
