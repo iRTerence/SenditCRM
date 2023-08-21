@@ -1,0 +1,106 @@
+.role-modal-container{
+    position: "fixed";
+    transform: "translate(116px, 96px)";
+    // zIndex: 9999;
+    display: flex;
+    // align-items: center;
+    padding-top: 75px;
+    justify-content: center;
+
+    .modal-title{
+        color: #00365A;
+        font-family: Nunito;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 26.4px;
+    }
+    .centered-content {
+      background-color: white;
+      padding: 35px;
+      border-radius: 8px;
+      height:80%;
+      width: 40%;
+ 
+    }
+
+    .role-modal-header{
+      display:flex;
+      justify-content: space-between;
+    }
+
+    .role-name-container{
+      margin-top: 50px;
+      border-radius: 4px;
+      border: 1px solid #D6E1E6;
+      padding: 6px 15px;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .role-text{
+        color: #00365A;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30px; /* 187.5% */
+      }
+      .role-name{
+        color: #C0C0C0;
+        font-family: Nunito;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26.4px; /* 188.571% */
+      }
+
+      
+    }
+
+    .access-table{
+      text-align: left;
+
+      width: 100%;
+      border-collapse: collapse;
+  
+      th,
+      td {
+        padding: 10px;
+        // text-align: center;
+      }
+  
+      .table-row-container {
+        border-bottom: 1px solid #f2f2f2;
+      }
+    }
+
+    .radio-button {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgb(217 217 217);
+      border-radius: 4px; /* This gives the square shape */
+      margin: 0;
+      cursor: pointer;
+
+      &:checked {
+        background-color: #3bc97b; /* Color when selected */
+        border: none;
+    }
+    
+
+  } 
+  .permission-name{
+    color: #00365A;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 187.5% */
+  }
+
+  .table-row-container{
+    border-bottom: 1px solid #F2F2F2;
+  }
+}

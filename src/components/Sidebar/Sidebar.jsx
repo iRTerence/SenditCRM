@@ -58,7 +58,11 @@ function Sidebar({ hide, isSidebarVisible }) {
   }
 
   function handleSubMenuClick(subMenuItem) {
-    setActiveSubMenu(subMenuItem);
+    if (activeSubMenu === subMenuItem) {
+      setActiveSubMenu(null); // Close the active submenu
+    } else {
+      setActiveSubMenu(subMenuItem);
+    }
   }
 
   const menuItems = [
@@ -129,7 +133,7 @@ function Sidebar({ hide, isSidebarVisible }) {
           activeIcon: userIconActive,
         },
         {
-          id: "RolesAndPermissions",
+          id: "roles",
           text: "Roles & Permissions",
           icon: unlockIcon,
           activeIcon: unlockIconActive,

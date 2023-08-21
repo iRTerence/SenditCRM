@@ -60,13 +60,8 @@ function App() {
             <Route path="/CRM" element={<CRM />} />
             <Route path="/admin" element={<Admin />}>
               <Route path="users" element={<Admin />} />
-              <Route
-                path="RolesAndPermissions"
-                element={<RolesAndPermissions />}
-              />
-
-              {/* This is the new sub-route */}
-            </Route>{" "}
+            </Route>
+            <Route path="/admin/roles" element={<RolesAndPermissions />} />
           </Routes>
         </Provider>
       </div>

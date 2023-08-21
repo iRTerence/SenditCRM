@@ -276,6 +276,20 @@ export default function AdminTable() {
     setPage(newPage);
   };
 
+  function orderArray(inputArray, referenceArray) {
+    const orderedArray = [];
+
+    for (const role of referenceArray) {
+      if (inputArray.includes(role)) {
+        orderedArray.push(role);
+      }
+    }
+
+    return orderedArray;
+  }
+
+  const roleOrder = ["manager", "auditor", "admin"];
+
   return (
     <>
       <AccountUserModal open={open} handleClose={handleClose} />
@@ -331,17 +345,19 @@ export default function AdminTable() {
 
                   <TableCell style={{ width: 160 }} align="left">
                     <div className="button-container">
-                      {row.userRole.map((role, index) => {
-                        if (role === "manager") {
-                          return <ManagerButton key={index} />;
-                        } else if (role === "admin") {
-                          return <AdminButton key={index} />;
-                        } else if (role === "auditor") {
-                          return <AuditorButton key={index} />;
-                        } else {
-                          return null; // Handle other roles if needed
+                      {orderArray(row.userRole, roleOrder).map(
+                        (role, index) => {
+                          if (role === "manager") {
+                            return <ManagerButton key={index} />;
+                          } else if (role === "admin") {
+                            return <AdminButton key={index} />;
+                          } else if (role === "auditor") {
+                            return <AuditorButton key={index} />;
+                          } else {
+                            return null; // Handle other roles if needed
+                          }
                         }
-                      })}
+                      )}
                     </div>
                   </TableCell>
                   <TableCell style={{ width: 200 }} align="left">
