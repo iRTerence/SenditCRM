@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BACKEND_URL =
-  "https://dev2.4pay.ca/mophonecrm/www/php/Workflows/services.php";
+  "https://dev2.4pay.ca/sendit/www/php/Workflows/services.php?output=json";
 
 export const getUsers = async () => {
   try {
@@ -28,7 +28,7 @@ export const getUsers = async () => {
 
     const config = {
       method: "post",
-      url: "https://dev2.4pay.ca/mophonecrm/www/php/Workflows/services.php?output=json",
+      url: "https://dev2.4pay.ca/sendit/www/php/Workflows/services.php?output=json",
       headers: {
         "Content-Type": "application/json",
         // Cookie: "PHPSESSID=rvrlpdaj6v419pl7op1p8j1o0t",
@@ -62,7 +62,7 @@ export const login = async (username, password) => {
 
     const config = {
       method: "post",
-      url: "https://dev2.4pay.ca/mophonecrm/www/php/Workflows/services.php?output=json",
+      url: "https://dev2.4pay.ca/sendit/www/php/Workflows/services.php?output=json",
       headers: {
         "Content-Type": "application/json",
         // Cookie: "PHPSESSID=rvrlpdaj6v419pl7op1p8j1o0t",

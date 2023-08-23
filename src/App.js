@@ -21,6 +21,7 @@ import FooterNotifications from "./components/FooterNotifications/FooterNotifica
 import "./App.scss";
 import Admin from "./pages/Admin/Admin";
 import RolesAndPermissions from "./pages/RolesAndPermissions/RolesAndPermissions";
+import Compliance from "./pages/Compliance/Compliance";
 
 function App() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -51,19 +52,18 @@ function App() {
         />
       )}
       <div className="home">
-        <Provider store={store}>
-          {!isLoginRoute && <Sidebar isSidebarVisible={isSidebarVisible} />}
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/program" element={<Program />} />
-            <Route path="/CRM" element={<CRM />} />
-            <Route path="/admin" element={<Admin />}>
-              <Route path="users" element={<Admin />} />
-            </Route>
-            <Route path="/admin/roles" element={<RolesAndPermissions />} />
-          </Routes>
-        </Provider>
+        {!isLoginRoute && <Sidebar isSidebarVisible={isSidebarVisible} />}
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/program" element={<Program />} />
+          <Route path="/CRM" element={<CRM />} />
+          <Route path="/admin" element={<Admin />}>
+            <Route path="users" element={<Admin />} />
+          </Route>
+          <Route path="/admin/roles" element={<RolesAndPermissions />} />
+          <Route path="/compliance" element={<Compliance />} />
+        </Routes>
       </div>
       {/* <FooterNotifications /> */}
       <Footer />

@@ -1,0 +1,43 @@
+.header-cell-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sort-arrow {
+    margin-left: 4px; /* Adjust the spacing as needed */
+  }
+
+  .transaction-table-headers {
+    
+    color: #4C5566;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 33.6px; /* 210% */
+  }
+
+  .transaction-table-date{
+    color: #6B7280;
+    font-family: Nunito;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33.6px; /* 224% */
+  }
+
+  .transaction-table-address{
+    color: #76AAF2;
+    font-family: Nunito;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33.6px; /* 224% */
+
+
+  }
+
+  .transaction-table-address-container{
+    display:flex;
+    justify-content: space-between;
+  }
