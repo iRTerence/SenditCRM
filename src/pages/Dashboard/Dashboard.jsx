@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Dashboard.scss";
 import InfoCard from "../../components/InfoCard/InfoCard";
 import MainChart from "../../components/MainChart/MainChart";
@@ -13,8 +13,30 @@ import LineCharts from "../../components/LineChart/LineCharts";
 import TransactionsPieChart from "../../components/TransactionsPieChart/TransactionsPieChart";
 import TransactionList from "../../components/TransactionList/TransactionList";
 import NewCustomerItem from "../../components/NewCustomerItem/NewCustomerItem";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../util/API/customers";
+import { getUserList } from "../../store/redux/users";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function getList() {
+      let userList = await getUsers();
+      console.log(userList);
+      dispatch(getUserList({ users: userList }));
+    }
+    getList();
+  }, []);
+
+  const customerList = useSelector((state) => state.usersList.users);
+  const customerCount = customerList.count;
+  const newCustomersList = customerList.payload.slice(
+    Math.max(customerList.payload.length - 3, 0)
+  );
+
+  console.log(newCustomersList);
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-title">Dashboard</div>
@@ -28,7 +50,7 @@ const Home = () => {
               title={"Transactions"}
               number={1598}
             />
-            <InfoCard image={user} title={"Customers"} number={367} />
+            <InfoCard image={user} title={"Customers"} number={customerCount} />
             <InfoCard image={world} title={"Other"} number={97} />
           </div>
           <div className="linechart-container">
