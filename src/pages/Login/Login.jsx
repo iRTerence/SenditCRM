@@ -6,22 +6,35 @@ import { useAuth } from "../../store/context/auth";
 import { useNavigate, useLocation } from "react-router-dom";
 import userImage from "../../images/login-user.svg";
 import logo from "../../images/SenditLogo.svg";
+import { login } from "../../util/http";
+import { useDispatch } from "react-redux";
+import { setLoggedInUser } from "../../store/redux/login";
 
 import "./Login.scss";
 
 function Login() {
   const [userName, setUsername, usernameReset] = handleChange("");
   const [password, setPassword, passwordReset] = handleChange("");
-  const [userData, setUserData] = useState();
-  const auth = useAuth();
+  const [loggedIn, setLoggedIn] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const redirectPath = location.state?.path || "/dashboard";
+  const dispatch = useDispatch();
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    navigate("/dashboard");
-    // let response = await login(userName, password);
+    // navigate("/dashboard");
+    let response = await login(userName, password);
+    let callStatus = response.callStatus;
+    console.log(response);
+    if (callStatus == 1) {
+      dispatch(setLoggedInUser(response));
+      setLoggedIn(false);
+      navigate(redirectPath, { replace: true });
+    } else {
+      setLoggedIn(true);
+      console.log("faield");
+    }
     // setUserData(response);
     // auth.login(response);
   }
@@ -29,7 +42,6 @@ function Login() {
   // useEffect(() => {
   //   const loggedInUser = localStorage.getItem("user");
   //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
   //     setUserData(foundUser);
   //     auth.login(foundUser);
   //     navigate(redirectPath, { replace: true });
@@ -42,7 +54,6 @@ function Login() {
   //     } else {
   //       console.log("Logged In!!!");
   //       console.log(auth.user.merchant);
-  //       localStorage.setItem("user", JSON.stringify(auth.user.merchant));
   //       navigate(redirectPath, { replace: true });
   //     }
   //   }
@@ -94,6 +105,7 @@ function Login() {
                 placeholder="Password"
               ></input>
             </div>
+            {loggedIn && <div id="failed-login">Unauthorized Access</div>}
 
             <div className="login-button-container">
               <div>Forgot Password?</div>

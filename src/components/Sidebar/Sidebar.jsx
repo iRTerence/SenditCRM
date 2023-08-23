@@ -27,6 +27,9 @@ import userIcon from "../../images/usersicon.svg";
 import userIconActive from "../../images/usersiconactive.svg";
 import unlockIconActive from "../../images/unlockactive.svg";
 import unlockIcon from "../../images/unlockicon.svg";
+import { useDispatch } from "react-redux";
+import { setLoggedOutUser } from "../../store/redux/login";
+import { useNavigate } from "react-router-dom";
 
 import "./Sidebar.scss";
 
@@ -34,6 +37,8 @@ function Sidebar({ hide, isSidebarVisible }) {
   const [activeMenuItem, setActiveMenuItem] = useState(null);
   const [activeSubMenu, setActiveSubMenu] = useState(null);
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const pathSegments = location.pathname.split("/");
@@ -42,6 +47,11 @@ function Sidebar({ hide, isSidebarVisible }) {
   }, [location.pathname]);
 
   function handleMenuItemClick(menuItem) {
+    if (menuItem === "logout") {
+      dispatch(setLoggedOutUser()); // Dispatch the logout action
+      navigate("/");
+      return; // Return to prevent further handling
+    }
     const menuItemData = menuItems.find((item) => item.id === menuItem);
 
     if (menuItemData.subMenu && menuItemData.subMenu.length > 0) {

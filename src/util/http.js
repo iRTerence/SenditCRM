@@ -28,7 +28,7 @@ export const getUsers = async () => {
 
     const config = {
       method: "post",
-      url: "https://dev2.4pay.ca/sendit/www/php/Workflows/services.php?output=json",
+      url: BACKEND_URL,
       headers: {
         "Content-Type": "application/json",
         // Cookie: "PHPSESSID=rvrlpdaj6v419pl7op1p8j1o0t",
@@ -49,20 +49,20 @@ export const login = async (username, password) => {
   console.log(username, password);
   try {
     const data = JSON.stringify({
-      svc: "app_2000",
-      pid: "merchantlogin",
+      svc: "crm_login",
+      pid: "MerchantLogin",
       dat: {
         location: "",
-        email: username,
+        username: username,
         password: password,
-        pin: "0",
-        authtype: "1",
+        // pin: "0",
+        // authtype: "1",
       },
     });
 
     const config = {
       method: "post",
-      url: "https://dev2.4pay.ca/sendit/www/php/Workflows/services.php?output=json",
+      url: BACKEND_URL,
       headers: {
         "Content-Type": "application/json",
         // Cookie: "PHPSESSID=rvrlpdaj6v419pl7op1p8j1o0t",
