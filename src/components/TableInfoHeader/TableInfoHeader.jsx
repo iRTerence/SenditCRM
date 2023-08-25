@@ -3,10 +3,10 @@ import "./TableInfoHeader.scss";
 import Search from "../../images/search.svg";
 import Filter from "../../images/filter-add.svg";
 
-function TableInfoHeader() {
+function TableInfoHeader({ count }) {
   return (
     <div className="table-info-header">
-      <p>Total: 78 Customers</p>
+      <p>Total: {count ? count : <>71</>} Customers</p>
       <div className="table-options">
         <select name="" id="date-options">
           <option value="date">Sort By: Date Created</option>

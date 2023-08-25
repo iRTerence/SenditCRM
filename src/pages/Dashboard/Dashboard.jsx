@@ -16,6 +16,7 @@ import NewCustomerItem from "../../components/NewCustomerItem/NewCustomerItem";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../util/API/customers";
 import { getUserList } from "../../store/redux/users";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -31,9 +32,9 @@ const Home = () => {
 
   const customerList = useSelector((state) => state.usersList.users);
   const customerCount = customerList.count;
-  const newCustomersList = customerList.payload.slice(
-    Math.max(customerList.payload.length - 3, 0)
-  );
+  const newCustomersList =
+    customerList.payload?.slice(Math.max(customerList.payload.length - 3, 0)) ||
+    [];
 
   console.log(newCustomersList);
 
@@ -66,10 +67,17 @@ const Home = () => {
         <div className="middle-boxes newcustomer-box">
           <h2 className="transaction-chart-title">New Customers</h2>
           <div>
-            <NewCustomerItem />
-            <NewCustomerItem />
-            <NewCustomerItem />
-            <div className="viewall-link">View All</div>
+            {newCustomersList.map((users) => (
+              <NewCustomerItem
+                dateJoined={users.Vuser.emailAccount}
+                firstName={users.Vuser.firstName}
+                lastName={users.Vuser.lastName}
+                country={users.Vuser.countryid}
+              />
+            ))}
+            <Link to="/crm">
+              <div className="viewall-link">View All</div>
+            </Link>
           </div>
 
           {/* <MainChart /> */}

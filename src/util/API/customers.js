@@ -42,3 +42,30 @@ export const getUsers = async () => {
     console.log(error);
   }
 };
+
+export const getUserDetails = async (userid) => {
+  try {
+    const data = JSON.stringify({
+      svc: "crm_users",
+      pid: "GetCustomerWithID",
+      dat: {
+        location: "",
+        userid: userid,
+      },
+    });
+
+    const config = {
+      method: "post",
+      url: BACKEND_URL,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    const response = await axios(config);
+    return response.data.payload.body;
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -270,9 +270,10 @@ const rows = fruitNames.map((name) => {
   );
 });
 
-export default function CustomPaginationActionsTable() {
+export default function CRMTable({ userData, handleSelectedUser }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage] = React.useState(2);
+  console.log(userData);
 
   const pageCount = Math.ceil(rows.length / rowsPerPage);
   const pageNumbers = Array.from({ length: pageCount }, (_, index) => index);
@@ -311,34 +312,37 @@ export default function CustomPaginationActionsTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows
+          {userData
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row) => (
-              <TableRow key={row.name}>
+              <TableRow key={row.Vuser.id}>
                 <TableCell component="th" scope="row" style={{ width: 50 }}>
                   <img src={UserFace} className="table-customer-photo" />
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="left">
-                  {row.name}
+                  {row.Vuser.firstName} {row.Vuser.lastName}
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="left">
                   <Flag
-                    code={row.country}
+                    code={row.Vuser.countryid}
                     height="18"
                     fallback={<span>Unknown</span>}
                   />
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="left">
-                  {row.email}
+                  {row.Vuser.emailAccount}
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="left">
-                  {row.phone}
+                  {row.Vuser.telephoneno}
                 </TableCell>
                 <TableCell style={{ width: 200 }} align="left">
-                  {row.address}
+                  {row.Vuser.cityname}
                 </TableCell>
                 <TableCell style={{ width: 120 }} align="right">
-                  <img src={EditIcon} />
+                  <img
+                    src={EditIcon}
+                    onClick={() => handleSelectedUser(row.Vuser.id)}
+                  />
                 </TableCell>
               </TableRow>
             ))}

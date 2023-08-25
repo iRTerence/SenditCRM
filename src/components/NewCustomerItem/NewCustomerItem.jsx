@@ -1,23 +1,28 @@
 import React from "react";
 import "./NewCustomerItem.scss";
 import Darth from "../../images/darth.jpg";
-import ReactCountryFlag from "react-country-flag";
+import Flag from "react-world-flags";
 
-function NewCustomerItem() {
+function NewCustomerItem({
+  dateJoined,
+  firstName,
+  lastName,
+  picture,
+  country,
+}) {
   return (
     <div className="new-customer-container">
       <img src={Darth} className="new-customer-photo" />
-      <div className="new-customer-name">Darth Vader</div>
-      <ReactCountryFlag
-        countryCode="US"
-        svg
-        style={{
-          width: "2em",
-          height: "2em",
-          marginLeft: "2rem",
-        }}
-        title="US"
-      />
+      <div className="name-flag-container">
+        <div className="new-customer-name">
+          {firstName} {lastName}
+        </div>
+
+        <div>
+          <Flag code={country} height="18" fallback={<span>Unknown</span>} />
+        </div>
+      </div>
+
       <div className="joined-text">Joined</div>
       <div className="joined-date">Jun 20/2023</div>
     </div>

@@ -31,33 +31,14 @@ function Login() {
       dispatch(setLoggedInUser(response));
       setLoggedIn(false);
       navigate(redirectPath, { replace: true });
+      localStorage.setItem("user", JSON.stringify(response));
     } else {
       setLoggedIn(true);
-      console.log("faield");
+      console.log("failed");
     }
     // setUserData(response);
     // auth.login(response);
   }
-
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("user");
-  //   if (loggedInUser) {
-  //     setUserData(foundUser);
-  //     auth.login(foundUser);
-  //     navigate(redirectPath, { replace: true });
-  //   }
-
-  //   if (userData != undefined) {
-  //     if (userData.callStatus == 0) {
-  //       console.log("bad login");
-  //       console.log(auth.user);
-  //     } else {
-  //       console.log("Logged In!!!");
-  //       console.log(auth.user.merchant);
-  //       navigate(redirectPath, { replace: true });
-  //     }
-  //   }
-  // }, [userData]);
 
   function validateForm() {
     return userName.length > 0 && password.length > 0;

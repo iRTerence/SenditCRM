@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CustomerProfile.scss";
 import UserFace from "../../images/userface.jpg";
 import Camera from "../../images/camera-outline.svg";
 import Flag from "react-world-flags";
+import { getUserDetails } from "../../util/API/customers";
 
-function CustomerProfile() {
-  const [userData, setUesrData] = useState({
+function CustomerProfile({ selectedUser }) {
+  const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -14,15 +15,36 @@ function CustomerProfile() {
     username: "",
     password: "",
     newpassword: "",
+    dateAdded: "",
   });
 
   function handleChange(evt) {
     const value = evt.target.value;
-    setUesrData({
+    setUserData({
       ...userData,
       [evt.target.name]: value,
     });
   }
+
+  useEffect(() => {
+    async function getUserData() {
+      const userDetails = await getUserDetails(selectedUser);
+      console.log(userDetails);
+
+      setUserData({
+        firstName: userDetails.User.firstName,
+        lastName: userDetails.User.lastName,
+        email: userDetails.Useremailaccount.emailAccount,
+        phone: userDetails.User.contactPhoneNo,
+        birthDate: userDetails.User.dateofbirth,
+        username: userDetails.User.telephoneno,
+        password: "",
+        newpassword: "",
+        dateAdded: userDetails.User.dateAdded,
+      });
+    }
+    if (selectedUser) getUserData();
+  }, [selectedUser]);
 
   return (
     <div className="customer-porfile-container">
@@ -44,7 +66,9 @@ function CustomerProfile() {
         </div>
         <div className="registration-date-container">
           <div className="registration-label">Registration Date</div>
-          <div className="registration-date">08.05.2023</div>
+          <div className="registration-date">
+            {userData.dateAdded.slice(0, 10)}
+          </div>
         </div>
       </div>
       <div className="customer-details">

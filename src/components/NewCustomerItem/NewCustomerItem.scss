@@ -2,13 +2,13 @@
     display:flex;
     align-items: center;
     margin-top: 20px;
-    justify-content: space-around;
+    justify-content: space-between;
 
     .new-customer-photo{
         width: 56.564px;
         height: 51px;
         border-radius: 56.564px;
-        margin-right: 25px;
+        margin-right: 10px;
 
     }
 
@@ -19,7 +19,6 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        max-width: calc(100% - 83px); /* Adjust the value based on the total width of other elements inside .new-customer-container */
     }
 
     .joined-text{
@@ -37,6 +36,12 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+    }
+
+    .name-flag-container{
+        display:flex;
+        justify-content: space-between;
+        width: 200px;
     }
 }
 
