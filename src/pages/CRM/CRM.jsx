@@ -78,13 +78,17 @@ function CRM() {
         </div>
         <div className="customer-bottom-info">
           <div className="customer-bottom-box">
-            <CustomerProfile selectedUser={selectedUser} />
+            <CustomerProfile
+              selectedUser={selectedUser}
+              setSelectedUserData={setSelectedUserData}
+            />
           </div>
 
           <div className="customer-bottom-box">
             <CustomerTabs
               selectedUser={selectedUser}
               selectedUserData={selectedUserData}
+              setSelectedUserData={setSelectedUserData}
             />
           </div>
         </div>

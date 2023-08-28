@@ -119,160 +119,19 @@ function createData(name, email, phone, address, country) {
   return { name, email, phone, address, country };
 }
 
-const fruitNames = [
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  {
-    id: 1,
-    name: "Apple",
-    email: "Emailtest@email.com",
-    address: "475 Spruce Drive, Pittsburg, PA 23592",
-    country: "CAN",
-    phone: "999-999-9999",
-  },
-  //   "Banana",
-  //   "Orange",
-  //   "Grapes",
-  //   "Strawberry",
-  //   "Blueberry",
-  //   "Pineapple",
-  //   "Mango",
-  //   "Watermelon",
-  //   "Kiwi",
-  //   "Peach",
-  //   "Pear",
-  //   "Plum",
-  //   "Cherry",
-  //   "Blackberry",
-  //   "Raspberry",
-  //   "Apricot",
-  //   "Lemon",
-  //   "Lime",
-  //   "Coconut",
-  //   "Pomegranate",
-  //   "Fig",
-  //   "Guava",
-  //   "Papaya",
-  //   "Cranberry",
-  //   "Cantaloupe",
-  //   "Honeydew",
-  //   "Passion Fruit",
-  //   "Dragon Fruit",
-  //   "Mangosteen",
-  //   "Lychee",
-  //   "Star Fruit",
-  //   "Persimmon",
-  //   "Avocado",
-];
-
-// Generating random data for 76 fruits
-const rows = fruitNames.map((name) => {
-  return createData(
-    name.name,
-    name.email,
-    name.phone,
-    name.address,
-    name.country
-  );
-});
-
 export default function CRMTable({ userData, handleSelectedUser }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage] = React.useState(2);
+
+  const rows = userData.map((name) => {
+    return createData(
+      name.name,
+      name.email,
+      name.phone,
+      name.address,
+      name.country
+    );
+  });
   console.log(userData);
 
   const pageCount = Math.ceil(rows.length / rowsPerPage);

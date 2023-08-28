@@ -43,7 +43,11 @@ function a11yProps(index) {
   };
 }
 
-export default function AccountTabs({ selectedUser, selectedUserData }) {
+export default function AccountTabs({
+  selectedUser,
+  selectedUserData,
+  setSelectedUserData,
+}) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -115,7 +119,11 @@ export default function AccountTabs({ selectedUser, selectedUserData }) {
         Item Threes
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-        <KYC selectedUser={selectedUser} selectedUserData={selectedUserData} />
+        <KYC
+          selectedUser={selectedUser}
+          selectedUserData={selectedUserData}
+          setSelectedUserData={setSelectedUserData}
+        />
       </CustomTabPanel>
     </Box>
   );
