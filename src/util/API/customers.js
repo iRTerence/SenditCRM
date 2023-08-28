@@ -69,3 +69,31 @@ export const getUserDetails = async (userid) => {
     console.log(error);
   }
 };
+
+export const editUserDetails = async (userid, list) => {
+  try {
+    console.log(userid, list);
+    const data = JSON.stringify({
+      svc: "crm_users",
+      pid: "EditUserFieldsWithoutPIN",
+      dat: {
+        userid: userid,
+        list: list,
+      },
+    });
+
+    const config = {
+      method: "post",
+      url: BACKEND_URL,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    const response = await axios(config);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

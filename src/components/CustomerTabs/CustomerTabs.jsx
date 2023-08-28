@@ -2,11 +2,14 @@ import React from "react";
 import "./CustomerTabs.scss";
 import AccountTabs from "../AccountTabs/AccountTabs";
 
-function CustomerTabs() {
+function CustomerTabs({ selectedUser, selectedUserData }) {
   return (
     <div className="account-tabs-container">
       <div className="bottom-title">Customer Details</div>
-      <AccountTabs />
+      <AccountTabs
+        selectedUser={selectedUser}
+        selectedUserData={selectedUserData}
+      />
     </div>
   );
 }

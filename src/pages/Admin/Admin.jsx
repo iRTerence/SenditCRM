@@ -11,7 +11,7 @@ function Admin() {
         <div className="admin-header">Admin</div>
         <div className="admin-subtitle">User Management</div>
       </div>
-      <TableFilterHeader />
+      {/* <TableFilterHeader /> */}
       <div className="admin-table-container">
         <TableInfoHeader />
         <AdminTable />

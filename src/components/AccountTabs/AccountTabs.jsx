@@ -4,6 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import KYC from "../CustomerDetails/KYC/KYC";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,7 +43,7 @@ function a11yProps(index) {
   };
 }
 
-export default function AccountTabs() {
+export default function AccountTabs({ selectedUser, selectedUserData }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -74,11 +75,31 @@ export default function AccountTabs() {
             },
           }}
         >
-          <Tab label="Services" {...a11yProps(0)} />
-          <Tab label="Accounts" {...a11yProps(1)} />
-          <Tab label="Communications" {...a11yProps(2)} />
-          <Tab label="Transactions" {...a11yProps(3)} />
-          <Tab label="KYC/KYB" {...a11yProps(4)} />
+          <Tab
+            label="Services"
+            {...a11yProps(0)}
+            disabled={selectedUserData === null}
+          />
+          <Tab
+            label="Accounts"
+            {...a11yProps(1)}
+            disabled={selectedUserData === null}
+          />
+          <Tab
+            label="Communications"
+            {...a11yProps(2)}
+            disabled={selectedUserData === null}
+          />
+          <Tab
+            label="Transactions"
+            {...a11yProps(3)}
+            disabled={selectedUserData === null}
+          />
+          <Tab
+            label="KYC/KYB"
+            {...a11yProps(4)}
+            disabled={selectedUserData === null}
+          />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -94,7 +115,7 @@ export default function AccountTabs() {
         Item Threes
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
-        Item Threess
+        <KYC selectedUser={selectedUser} selectedUserData={selectedUserData} />
       </CustomTabPanel>
     </Box>
   );

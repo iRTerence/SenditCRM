@@ -3,20 +3,21 @@ import "./CustomerProfile.scss";
 import UserFace from "../../images/userface.jpg";
 import Camera from "../../images/camera-outline.svg";
 import Flag from "react-world-flags";
-import { getUserDetails } from "../../util/API/customers";
+import { getUserDetails, editUserDetails } from "../../util/API/customers";
 
 function CustomerProfile({ selectedUser }) {
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
-    birthDate: "",
+    telephoneno: "",
+    dateofbirth: "",
     username: "",
     password: "",
     newpassword: "",
     dateAdded: "",
   });
+  const [updated, setUpdated] = useState("");
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -35,8 +36,8 @@ function CustomerProfile({ selectedUser }) {
         firstName: userDetails.User.firstName,
         lastName: userDetails.User.lastName,
         email: userDetails.Useremailaccount.emailAccount,
-        phone: userDetails.User.contactPhoneNo,
-        birthDate: userDetails.User.dateofbirth,
+        telephoneno: userDetails.User.contactPhoneNo,
+        dateofbirth: userDetails.User.dateofbirth,
         username: userDetails.User.telephoneno,
         password: "",
         newpassword: "",
@@ -45,6 +46,32 @@ function CustomerProfile({ selectedUser }) {
     }
     if (selectedUser) getUserData();
   }, [selectedUser]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const listData = Object.keys(userData)
+      .filter(
+        (key) =>
+          key !== "dateAdded" &&
+          key !== "username" &&
+          key !== "email" &&
+          key !== "password" &&
+          key !== "newpassword" &&
+          userData[key]
+      ) // Exclude dateAdded and keys with empty or falsy values
+      .map((key) => `${key}|${userData[key]}`)
+      .join("/");
+
+    const updatedDetails = await editUserDetails(selectedUser, listData);
+    if (
+      userData.password != "" &&
+      userData.newpassword != "" &&
+      userData.password == userData.newpassword
+    ) {
+      console.log("here");
+    }
+    console.log(updatedDetails);
+  };
 
   return (
     <div className="customer-porfile-container">
@@ -110,7 +137,7 @@ function CustomerProfile({ selectedUser }) {
               <input
                 type="text"
                 name="phone"
-                value={userData.phone}
+                value={userData.telephoneno}
                 onChange={handleChange}
                 className="phone-input"
               />
@@ -121,7 +148,7 @@ function CustomerProfile({ selectedUser }) {
             <input
               type="text"
               name="birthDate"
-              value={userData.birthDate}
+              value={userData.dateofbirth}
               onChange={handleChange}
             />
             <div className="customer-input-label">Birth Date</div>
@@ -156,7 +183,7 @@ function CustomerProfile({ selectedUser }) {
           <div className="minimum-password">Minimum 6 characters</div>
 
           <div className="customerdetail-btn">
-            <button> Change</button>
+            <button onClick={handleSubmit}> Change</button>
           </div>
         </form>
       </div>
