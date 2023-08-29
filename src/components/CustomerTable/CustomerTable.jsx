@@ -14,7 +14,7 @@ import TableHead from "@mui/material/TableHead";
 import UserIcon from "../../images/user-octagon.svg";
 import "./CustomerTable.scss";
 import EditIcon from "../../images/editpencil.svg";
-import UserFace from "../../images/userface.jpg";
+import UserFace from "../../images/user.png";
 import Flag from "react-world-flags";
 
 function CustomerTable(props) {
@@ -199,7 +199,16 @@ export default function CRMTable({ userData, handleSelectedUser }) {
               .map((row) => (
                 <TableRow key={row.Vuser.id}>
                   <TableCell component="th" scope="row" style={{ width: 50 }}>
-                    <img src={UserFace} className="table-customer-photo" />
+                    <img
+                      src={
+                        row.Vuser.photo == ""
+                          ? UserFace
+                          : "https://dev2.4pay.ca/ncsreve/img/pics/" +
+                            row.Vuser.photo
+                      }
+                      className="table-customer-photo"
+                      alt="User Image"
+                    />
                   </TableCell>
                   <TableCell style={{ width: 160 }} align="left">
                     {row.Vuser.firstName} {row.Vuser.lastName}

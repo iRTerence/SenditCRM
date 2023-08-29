@@ -128,3 +128,31 @@ export const CreateUser = async (username, password, email, phoneno, dob) => {
     console.log(error);
   }
 };
+
+export const setUserPassword = async (password, email) => {
+  try {
+    // console.log(userid, list);
+    const data = JSON.stringify({
+      svc: "crm_users",
+      pid: "setUserPassword",
+      dat: {
+        username: email,
+        password: password,
+      },
+    });
+
+    const config = {
+      method: "post",
+      url: BACKEND_URL,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    const response = await axios(config);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
