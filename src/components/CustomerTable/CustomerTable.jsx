@@ -149,69 +149,94 @@ export default function CRMTable({ userData, handleSelectedUser }) {
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
         <TableHead>
           <TableRow>
-            <TableCell>
+            <TableCell style={{ width: 50 }}>
               <img src={UserIcon} />
             </TableCell>
-            <TableCell align="left" className="customer-table-headers">
+            <TableCell
+              align="left"
+              className="customer-table-headers"
+              style={{ width: 160 }}
+            >
               Name
             </TableCell>
-            <TableCell align="left"></TableCell>
-            <TableCell align="left" className="customer-table-headers">
+            <TableCell align="left" style={{ width: 120 }}></TableCell>
+            <TableCell
+              align="left"
+              className="customer-table-headers"
+              style={{ width: 200 }}
+            >
               Email
             </TableCell>
-            <TableCell align="left" className="customer-table-headers">
+            <TableCell
+              align="left"
+              className="customer-table-headers"
+              style={{ width: 160 }}
+            >
               Phone
             </TableCell>
-            <TableCell align="left" className="customer-table-headers">
+            <TableCell
+              align="left"
+              className="customer-table-headers"
+              style={{ width: 200 }}
+            >
               Address
             </TableCell>
-            <TableCell align="right" className="customer-table-headers">
+            <TableCell
+              align="right"
+              className="customer-table-headers"
+              style={{ width: 120 }}
+            >
               Edit
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {userData
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row) => (
-              <TableRow key={row.Vuser.id}>
-                <TableCell component="th" scope="row" style={{ width: 50 }}>
-                  <img src={UserFace} className="table-customer-photo" />
-                </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
-                  {row.Vuser.firstName} {row.Vuser.lastName}
-                </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
-                  <Flag
-                    code={row.Vuser.countryid}
-                    height="18"
-                    fallback={<span>Unknown</span>}
-                  />
-                </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
-                  {row.Vuser.emailAccount}
-                </TableCell>
-                <TableCell style={{ width: 160 }} align="left">
-                  {row.Vuser.telephoneno}
-                </TableCell>
-                <TableCell style={{ width: 200 }} align="left">
-                  {row.Vuser.cityname}
-                </TableCell>
-                <TableCell style={{ width: 120 }} align="right">
-                  <img
-                    src={EditIcon}
-                    onClick={() => handleSelectedUser(row.Vuser.id)}
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
-          {/* {emptyRows > 0 && (
+      </Table>
+      <div style={{ overflowX: "auto" }}>
+        <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+          <TableBody>
+            {userData
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => (
+                <TableRow key={row.Vuser.id}>
+                  <TableCell component="th" scope="row" style={{ width: 50 }}>
+                    <img src={UserFace} className="table-customer-photo" />
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="left">
+                    {row.Vuser.firstName} {row.Vuser.lastName}
+                  </TableCell>
+                  <TableCell style={{ width: 120 }} align="left">
+                    <Flag
+                      code={row.Vuser.countryid}
+                      height="18"
+                      fallback={<span>Unknown</span>}
+                    />
+                  </TableCell>
+                  <TableCell style={{ width: 200 }} align="left">
+                    {row.Vuser.emailAccount}
+                  </TableCell>
+                  <TableCell style={{ width: 160 }} align="left">
+                    {row.Vuser.telephoneno}
+                  </TableCell>
+                  <TableCell style={{ width: 200 }} align="left">
+                    {row.Vuser.cityname}
+                  </TableCell>
+                  <TableCell style={{ width: 120 }} align="right">
+                    <img
+                      src={EditIcon}
+                      onClick={() => handleSelectedUser(row.Vuser.id)}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+            {/* {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
               <TableCell colSpan={3} />
             </TableRow>
           )} */}
-        </TableBody>
-      </Table>
+          </TableBody>
+        </Table>
+      </div>
+
       <CustomerTable
         page={page}
         onPageChange={handleChangePage}

@@ -35,3 +35,10 @@
     width: 44px;
     height: 44px;
   }
+
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff; /* Add the desired background color */
+  }

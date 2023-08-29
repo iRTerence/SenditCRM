@@ -5,6 +5,7 @@ import CustomerProfile from "../CustomerProfile/CustomerProfile";
 import UserFace from "../../images/userface.jpg";
 import Camera from "../../images/camera-outline.svg";
 import Flag from "react-world-flags";
+import { CreateUser } from "../../util/API/customers";
 
 function CreateUserModal({ open, handleClose }) {
   const [userData, setUserData] = useState({
@@ -25,6 +26,11 @@ function CreateUserModal({ open, handleClose }) {
       [evt.target.name]: value,
     });
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("here");
+  };
 
   return (
     <div>
@@ -62,18 +68,9 @@ function CreateUserModal({ open, handleClose }) {
                   </div>
                 </button>
               </div>
-              <div className="registration-date-container">
-                <div className="registration-label">Registration Date</div>
-                <div className="registration-date">08.05.2023</div>
-              </div>
-              <div className="registration-date-container">
-                <div className="registration-label">Last Logged In Date</div>
-                <div className="registration-date">08.05.2023</div>
-              </div>
-              <div className="logged-in-text">Logged In</div>
             </div>
             <div className="customer-details">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="customer-inputs">
                   <input
                     type="text"
@@ -104,14 +101,14 @@ function CreateUserModal({ open, handleClose }) {
                 </div>
                 <div className="customer-inputs mt-14">
                   <div className="phone-flag-container">
-                    <div className="phone-flag">
+                    {/* <div className="phone-flag">
                       <Flag
                         code={"US"}
                         height="15"
                         fallback={<span>Unknown</span>}
                       />
                     </div>
-                    <p>|</p>
+                    <p>|</p> */}
                     <input
                       type="text"
                       name="phone"
@@ -124,10 +121,11 @@ function CreateUserModal({ open, handleClose }) {
                 </div>
                 <div className="customer-inputs mt-14">
                   <input
-                    type="text"
                     name="birthDate"
                     value={userData.birthDate}
                     onChange={handleChange}
+                    placeholder="YYYY-MM-DD"
+                    type="date"
                   />
                   <div className="customer-input-label">Birth Date</div>
                 </div>
@@ -141,11 +139,11 @@ function CreateUserModal({ open, handleClose }) {
                   <div className="customer-input-label">Username</div>
                 </div>
 
-                <div className="role-container">
+                {/* <div className="role-container">
                   <div className="manager-button">Manager</div>
                   <div className="admin-button role-disabled">Admin</div>
                   <div className="auditor-button role-disabled">Auditor</div>
-                </div>
+                </div> */}
 
                 <div className="customer-inputs mt-14">
                   <input
@@ -154,7 +152,7 @@ function CreateUserModal({ open, handleClose }) {
                     value={userData.password}
                     onChange={handleChange}
                   />
-                  <div className="customer-input-label">Old Password</div>
+                  <div className="customer-input-label">Password</div>
                 </div>
                 <div className="customer-inputs mt-14">
                   <input
@@ -163,12 +161,12 @@ function CreateUserModal({ open, handleClose }) {
                     value={userData.newpassword}
                     onChange={handleChange}
                   />
-                  <div className="customer-input-label">New Password</div>
+                  <div className="customer-input-label">Password</div>
                 </div>
                 <div className="minimum-password">Minimum 6 characters</div>
 
                 <div className="customerdetail-btn">
-                  <button> Change</button>
+                  <button> Add User</button>
                 </div>
               </form>
             </div>
