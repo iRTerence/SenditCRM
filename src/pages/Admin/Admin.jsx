@@ -3,6 +3,7 @@ import "./Admin.scss";
 import TableFilterHeader from "../../components/TableHeader/TableFilterHeader";
 import TableInfoHeader from "../../components/TableInfoHeader/TableInfoHeader";
 import AdminTable from "../../components/AdminTable/AdminTable";
+import AdminTableFilterHeader from "../../components/AdminTableFilterHeader/AdminTableFilterHeader";
 
 function Admin() {
   return (
@@ -11,7 +12,7 @@ function Admin() {
         <div className="admin-header">Admin</div>
         <div className="admin-subtitle">User Management</div>
       </div>
-      {/* <TableFilterHeader /> */}
+      <AdminTableFilterHeader />
       <div className="admin-table-container">
         <TableInfoHeader />
         <AdminTable />

@@ -263,3 +263,51 @@ export const getCardholderemessages = async (customerinput) => {
     console.log(error);
   }
 };
+
+export const NewUser = async (
+  email,
+  firstName,
+  lastName,
+  password,
+  country,
+  city,
+  phoneno,
+  address,
+  zip,
+  dob,
+  idNumber
+) => {
+  try {
+    const data = JSON.stringify({
+      svc: "crm_users",
+      pid: "register",
+      dat: {
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        password: password,
+        country: country,
+        city: city,
+        phoneno: phoneno,
+        address: address,
+        zip: zip,
+        dob: dob,
+        idNumber: idNumber,
+      },
+    });
+
+    const config = {
+      method: "post",
+      url: BACKEND_URL,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    const response = await axios(config);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
