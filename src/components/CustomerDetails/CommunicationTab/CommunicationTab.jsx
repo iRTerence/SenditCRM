@@ -43,22 +43,55 @@ function CommunicationTab({
     getMessages();
   }, [selectedUser]);
 
-  const setUserData = () => {};
+  const fakeData = [
+    {
+      id: 1,
+      dateTime: "2023-08-29 10:00 AM",
+      message: "Lorem ipsum dolor sit amet.",
+      view: "View",
+    },
+    {
+      id: 2,
+      dateTime: "2023-08-30 02:30 PM",
+      message: "Consectetur adipiscing elit.",
+      view: "View",
+    },
+    {
+      id: 3,
+      dateTime: "2023-08-31 08:15 AM",
+      message: "Sed do eiusmod tempor incididunt.",
+      view: "View",
+    },
+  ];
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Date/Time</th>
-            <th>Message</th>
-            <th>View</th>
+    <table className="full-width-table">
+      <thead>
+        <tr className="header-row">
+          <th>#</th>
+          <th>Date/Time</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        {smsData.record &&
+          smsData.record.length &&
+          smsData.record.map((item, index) => (
+            <tr key={index}>
+              <td>{index}</td>
+              <td>{item.smslog.dt}</td>
+              <td>{item.smslog.phonetxt}</td>
+            </tr>
+          ))}
+        {smsData.record && smsData != false && (
+          <tr key={1}>
+            <td>{1}</td>
+            <td>{smsData.record.smslog.dt}</td>
+            <td>{smsData.record.smslog.phonetxt}</td>
           </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+        )}
+      </tbody>
+    </table>
   );
 }
 
