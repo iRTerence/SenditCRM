@@ -156,3 +156,110 @@ export const setUserPassword = async (password, email) => {
     console.log(error);
   }
 };
+
+export const PictureNew = async (userid, imagedata) => {
+  try {
+    // console.log(userid, list);
+    const data = JSON.stringify({
+      svc: "crm_users",
+      pid: "PictureNew",
+      dat: {
+        userid: userid,
+        imagedata: imagedata,
+      },
+    });
+
+    const config = {
+      method: "post",
+      url: BACKEND_URL,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    const response = await axios(config);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getBalances = async (userid, imagedata) => {
+  try {
+    // console.log(userid, list);
+    const data = JSON.stringify({
+      svc: "crm_users",
+      pid: "GetBalances",
+      dat: {
+        userid: userid,
+      },
+    });
+
+    const config = {
+      method: "post",
+      url: BACKEND_URL,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    const response = await axios(config);
+    return response.data.payload;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getCardholdermessages = async (customerinput) => {
+  try {
+    const data = JSON.stringify({
+      svc: "crm_users",
+      pid: "getCardholdermessages",
+      dat: {
+        customerinput: customerinput,
+      },
+    });
+
+    const config = {
+      method: "post",
+      url: BACKEND_URL,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    const response = await axios(config);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getCardholderemessages = async (customerinput) => {
+  try {
+    const data = JSON.stringify({
+      svc: "crm_users",
+      pid: "getCardholderemessages",
+      dat: {
+        customerinput: customerinput,
+      },
+    });
+
+    const config = {
+      method: "post",
+      url: BACKEND_URL,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    const response = await axios(config);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};

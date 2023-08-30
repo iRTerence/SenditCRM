@@ -1,10 +1,12 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import KYC from "../CustomerDetails/KYC/KYC";
+import UserAccounts from "../CustomerDetails/UserAccounts/UserAccounts";
+import CommunicationTab from "../CustomerDetails/CommunicationTab/CommunicationTab";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,11 +50,15 @@ export default function AccountTabs({
   selectedUserData,
   setSelectedUserData,
 }) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    setValue(0);
+  }, selectedUser);
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -110,10 +116,18 @@ export default function AccountTabs({
         Item One
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <UserAccounts
+          selectedUser={selectedUser}
+          selectedUserData={selectedUserData}
+          setSelectedUserData={setSelectedUserData}
+        />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <CommunicationTab
+          selectedUser={selectedUser}
+          selectedUserData={selectedUserData}
+          setSelectedUserData={setSelectedUserData}
+        />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         Item Threes

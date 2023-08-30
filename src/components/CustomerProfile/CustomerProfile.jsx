@@ -8,6 +8,7 @@ import {
   editUserDetails,
   setUserPassword,
   getUsers,
+  PictureNew,
 } from "../../util/API/customers";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserList } from "../../store/redux/users";
@@ -24,6 +25,8 @@ function CustomerProfile({ selectedUser }) {
     newpassword: "",
     dateAdded: "",
     error: "",
+    photo: "",
+    base64Image: "",
   });
   const [updated, setUpdated] = useState("");
 
@@ -52,10 +55,29 @@ function CustomerProfile({ selectedUser }) {
         password: "",
         newpassword: "",
         dateAdded: userDetails.User.dateAdded,
+        photo:
+          "https://dev2.4pay.ca/ncsreve/img/pics/" + userDetails.User.photo,
       });
     }
     if (selectedUser) getUserData();
   }, [selectedUser]);
+
+  const onImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      let img = event.target.files[0];
+      let reader = new FileReader();
+
+      reader.onload = (e) => {
+        setUserData({
+          ...userData,
+          photo: URL.createObjectURL(img),
+          base64Image: e.target.result, // Store the base64 representation of the image
+        });
+      };
+
+      reader.readAsDataURL(img);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,13 +94,24 @@ function CustomerProfile({ selectedUser }) {
           key !== "password" &&
           key !== "newpassword" &&
           key !== "error" &&
+          key !== "photo" &&
+          key !== "base64Image" &&
           userData[key]
       ) // Exclude dateAdded and keys with empty or falsy values
       .map((key) => `${key}|${userData[key]}`)
       .join("/");
 
+    if (userData.base64Image !== "") {
+      const pictureNewResponse = await PictureNew(
+        selectedUser,
+        userData.base64Image
+      );
+      console.log(pictureNewResponse);
+    }
+
+    //updatingh user fields
     const updatedDetails = await editUserDetails(selectedUser, listData);
-    console.log();
+    console.log(updatedDetails);
 
     if (updatedDetails.payload.callStatus == 1) {
       let userList = await getUsers();
@@ -86,6 +119,7 @@ function CustomerProfile({ selectedUser }) {
       dispatch(getUserList({ users: userList }));
     }
 
+    // Updating password if password was passed
     if (
       userData.password != "" &&
       userData.newpassword != "" &&
@@ -113,6 +147,8 @@ function CustomerProfile({ selectedUser }) {
         });
       }
     }
+
+    //Updating user image if an image was uploaded
   };
 
   return (
@@ -121,16 +157,44 @@ function CustomerProfile({ selectedUser }) {
         <div className="bottom-title">Customer Details</div>
         <div className="customer-photo-container">
           <div>
-            <img className="user-profile" src={UserFace} />
+            <img
+              className="user-profile"
+              src={
+                userData.photo == "https://dev2.4pay.ca/ncsreve/img/pics/" ||
+                userData.photo == ""
+                  ? UserFace
+                  : userData.photo
+              }
+            />
+            {/* <img
+              className="user-profile"
+              src={
+                userData.photo == ""
+                  ? UserFace
+                  : "https://dev2.4pay.ca/ncsreve/img/pics/" + userData.photo
+              }
+            /> */}
           </div>
           <button>
-            <div className="user-upload-button">
-              <div style={{ flex: 1 }}>{/* <img src={Camera} /> */}</div>
-              <div style={{ flex: 2 }}>Upload</div>
-              <div style={{ flex: 1 }}>
-                <img src={Camera} />
+            <label
+              htmlFor="upload-input"
+              style={{ cursor: "pointer", display: "block", width: "100%" }}
+            >
+              <div className="user-upload-button">
+                <input
+                  type="file"
+                  id="upload-input"
+                  name="myImage"
+                  style={{ display: "none" }}
+                  onChange={onImageChange}
+                />
+                <div style={{ flex: 1 }}>{/* <img src={Camera} /> */}</div>
+                <div style={{ flex: 2 }}>Upload</div>
+                <div style={{ flex: 1 }}>
+                  <img src={Camera} alt="Camera" />
+                </div>
               </div>
-            </div>
+            </label>
           </button>
         </div>
         <div className="registration-date-container">

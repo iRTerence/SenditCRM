@@ -17,6 +17,7 @@ function CRM() {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [open, setOpen] = useState(false);
   const [selectedUserData, setSelectedUserData] = useState(null);
+  const [searchText, setSearchText] = useState("");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -36,6 +37,26 @@ function CRM() {
     }
   }, []);
 
+  useEffect(() => {
+    if (userData) {
+      if (searchText.trim() === "") {
+        setFilteredUsers(userData.payload);
+      } else {
+        const filtered = userData.payload.filter(
+          (user) =>
+            user.Vuser.firstName
+              .toLowerCase()
+              .includes(searchText.toLowerCase()) ||
+            user.Vuser.emailAccount
+              .toLowerCase()
+              .includes(searchText.toLowerCase()) ||
+            user.Vuser.telephoneno.includes(searchText)
+        );
+        setFilteredUsers(filtered);
+      }
+    }
+  }, [userData, searchText]);
+
   const handleSelectedUser = async (selectedCustomer) => {
     setSelectedUser(selectedCustomer);
     const userDetails = await getUserDetails(selectedCustomer);
@@ -43,6 +64,7 @@ function CRM() {
   };
 
   const handleSearch = (searchText) => {
+    setSearchText(searchText);
     if (searchText.trim() === "") {
       setFilteredUsers(userData.payload);
     } else {
