@@ -84,12 +84,14 @@ function Login() {
                 value={password}
                 onChange={setPassword}
                 placeholder="Password"
+                type="password"
               ></input>
             </div>
             {loggedIn && <div id="failed-login">Unauthorized Access</div>}
 
             <div className="login-button-container">
-              <div>Forgot Password?</div>
+              {/* <div>Forgot Password?</div> */}
+              <div></div>
               <div>
                 <button className="login-button">Login</button>
               </div>

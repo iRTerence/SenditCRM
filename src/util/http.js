@@ -1,7 +1,7 @@
 import axios from "axios";
+import { developmentUrl } from "../config";
 
-const BACKEND_URL =
-  "https://dev2.4pay.ca/sendit/www/php/Workflows/services.php?output=json";
+const BACKEND_URL = developmentUrl;
 
 // export const getUsers = async () => {
 //   try {
@@ -46,7 +46,7 @@ const BACKEND_URL =
 // };
 
 export const login = async (username, password) => {
-  console.log(username, password);
+  console.log(developmentUrl);
   try {
     const data = JSON.stringify({
       svc: "crm_login",

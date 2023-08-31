@@ -1,7 +1,7 @@
 import axios from "axios";
+import { developmentUrl } from "../../config";
 
-const BACKEND_URL =
-  "https://dev2.4pay.ca/sendit/www/php/Workflows/services.php?output=json";
+const BACKEND_URL = developmentUrl;
 
 export const DocumentRead = async (docid) => {
   try {

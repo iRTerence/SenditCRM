@@ -26,12 +26,12 @@ function Navbar({ hide, onMenuIconClick }) {
           <div className="navicons" onClick={onMenuIconClick}>
             <ListOutlinedIcon className="icons" />
           </div>
-          <div className="search">
+          {/* <div className="search">
             <input type="text" placeholder="Search" />
             <SearchOutlinedIcon className="search-icon" />
-          </div>
+          </div> */}
           <div>
-            <FormControl
+            {/* <FormControl
               sx={{
                 m: 1,
                 minWidth: 90,
@@ -59,11 +59,11 @@ function Navbar({ hide, onMenuIconClick }) {
               }}
               size="small"
               variant="outlined"
-            >
-              <InputLabel id="demo-select-small-label">
+            > */}
+            {/* <InputLabel id="demo-select-small-label">
                 {language === "" ? "EN" : language}
-              </InputLabel>
-              <Select
+              </InputLabel> */}
+            {/* <Select
                 labelId="demo-select-small-label"
                 id="demo-select-small"
                 value={language}
@@ -73,26 +73,26 @@ function Navbar({ hide, onMenuIconClick }) {
                 <MenuItem value={"EN"}>EN</MenuItem>
                 <MenuItem value={"FR"}>FR</MenuItem>
                 <MenuItem value={"ES"}>ES</MenuItem>
-              </Select>
-            </FormControl>
+              </Select> */}
+            {/* </FormControl> */}
           </div>
         </div>
 
         <img src={logo} alt="Logo" />
         <div className="navitems">
-          <div className="navicons">
+          {/* <div className="navicons">
             <Switch />
-          </div>
-          <div className="navicons">
+          </div> */}
+          {/* <div className="navicons">
             <FullscreenExitOutlinedIcon className="icons" />
-          </div>
-          <div className="navicons">
+          </div> */}
+          {/* <div className="navicons">
             <NotificationsNoneOutlinedIcon className="icons" />
             <div className="counter">1</div>
           </div>
           <div className="navicons">
             <ListOutlinedIcon className="icons" />
-          </div>
+          </div> */}
           <div className="navicons"></div>
         </div>
       </div>

@@ -32,9 +32,9 @@ function CRM() {
       dispatch(getUserList({ users: userList }));
     }
 
-    if (userData == null) {
-      getList();
-    }
+    // if (userData == null) {
+    getList();
+    // }
   }, []);
 
   useEffect(() => {

@@ -212,12 +212,12 @@ function Sidebar({ hide, isSidebarVisible }) {
       <div className="midsidebar">
         <ul>
           {menuItems.map((item) => (
-            <li
-              key={item.id}
-              onClick={() => handleMenuItemClick(item.id)}
-              className={activeMenuItem === item.id ? "active" : ""}
-            >
-              <Link to={`/${item.id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/${item.id}`} style={{ textDecoration: "none" }}>
+              <li
+                key={item.id}
+                onClick={() => handleMenuItemClick(item.id)}
+                className={activeMenuItem === item.id ? "active" : ""}
+              >
                 <div className="icon">
                   {typeof item.icon === "string" ? (
                     <img
@@ -231,8 +231,8 @@ function Sidebar({ hide, isSidebarVisible }) {
                   )}
                 </div>
                 <span>{item.text}</span>
-              </Link>
-            </li>
+              </li>
+            </Link>
           ))}
         </ul>
       </div>
@@ -240,16 +240,16 @@ function Sidebar({ hide, isSidebarVisible }) {
         <div className="submenubar">
           <div className="submenubarcontainer">
             {subMenuItems.map((subItem) => (
-              <div
-                key={subItem.id}
-                className={`${
-                  activeSubMenu === subItem.id ? "active" : ""
-                } submenucontainer`}
-                onClick={() => handleSubMenuClick(subItem.id)}
+              <Link
+                to={`/${activeMenuItem}/${subItem.id}`}
+                style={{ textDecoration: "none" }}
               >
-                <Link
-                  to={`/${activeMenuItem}/${subItem.id}`}
-                  style={{ textDecoration: "none" }}
+                <div
+                  key={subItem.id}
+                  className={`${
+                    activeSubMenu === subItem.id ? "active" : ""
+                  } submenucontainer`}
+                  onClick={() => handleSubMenuClick(subItem.id)}
                 >
                   <div className="icon">
                     {typeof subItem.icon === "string" ? (
@@ -268,8 +268,8 @@ function Sidebar({ hide, isSidebarVisible }) {
                   <div className={activeSubMenu === subItem.id ? "active" : ""}>
                     <span>{subItem.text}</span>
                   </div>
-                </Link>
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

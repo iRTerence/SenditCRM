@@ -45,7 +45,7 @@ function a11yProps(index) {
   };
 }
 
-export default function AccountTabs({
+export default function BatchTabs({
   selectedUser,
   selectedUserData,
   setSelectedUserData,
@@ -91,23 +91,18 @@ export default function AccountTabs({
             disabled={selectedUserData === null}
           /> */}
           <Tab
-            label="Accounts"
+            label="Scheduler"
             {...a11yProps(0)}
             disabled={selectedUserData === null}
           />
           <Tab
-            label="Communications"
+            label="Batch Deposits"
             {...a11yProps(1)}
             disabled={selectedUserData === null}
           />
           <Tab
-            label="Transactions"
+            label="History"
             {...a11yProps(2)}
-            disabled={selectedUserData === null}
-          />
-          <Tab
-            label="KYC/KYB"
-            {...a11yProps(3)}
             disabled={selectedUserData === null}
           />
         </Tabs>
@@ -115,29 +110,10 @@ export default function AccountTabs({
       {/* <CustomTabPanel value={value} index={0}>
         Item One
       </CustomTabPanel> */}
-      <CustomTabPanel value={value} index={0}>
-        <UserAccounts
-          selectedUser={selectedUser}
-          selectedUserData={selectedUserData}
-          setSelectedUserData={setSelectedUserData}
-        />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <CommunicationTab
-          selectedUser={selectedUser}
-          selectedUserData={selectedUserData}
-          setSelectedUserData={setSelectedUserData}
-        />
-      </CustomTabPanel>
+      <CustomTabPanel value={value} index={0}></CustomTabPanel>
+      <CustomTabPanel value={value} index={1}></CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Threes
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={3}>
-        <KYC
-          selectedUser={selectedUser}
-          selectedUserData={selectedUserData}
-          setSelectedUserData={setSelectedUserData}
-        />
       </CustomTabPanel>
     </Box>
   );

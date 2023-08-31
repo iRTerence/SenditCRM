@@ -18,6 +18,7 @@ import RolesAndPermissions from "./pages/RolesAndPermissions/RolesAndPermissions
 import Compliance from "./pages/Compliance/Compliance";
 import { useSelector } from "react-redux";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
+import Batch from "./pages/Batch/Batch";
 
 function App() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -54,14 +55,15 @@ function App() {
         {!isLoginRoute && <Sidebar isSidebarVisible={isSidebarVisible} />}
         <Routes>
           <Route element={<ProtectedRoutes />}>
+            <Route path="/CRM" element={<CRM />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/program" element={<Program />} />
-            <Route path="/CRM" element={<CRM />} />
             <Route path="/admin" element={<Admin />}>
               <Route path="users" element={<Admin />} />
             </Route>
             <Route path="/admin/roles" element={<RolesAndPermissions />} />
             <Route path="/compliance" element={<Compliance />} />
+            <Route path="/batch" element={<Batch />} />
           </Route>
           <Route path="/" element={<Login />} />
         </Routes>
